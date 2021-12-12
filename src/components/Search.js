@@ -14,7 +14,7 @@ function Search() {
         setTimeout(() => {
             if (result)
                 setFlag(true)
-        }, 400);
+        }, 1000);
     }
 
     const [flag, setFlag] = useState(false)
