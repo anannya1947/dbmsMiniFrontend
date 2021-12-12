@@ -1,5 +1,5 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 export const Header = () => {
     return (
@@ -17,6 +17,9 @@ export const Header = () => {
 
                         <li>
                             <Link to="/watched">Watched</Link>
+                        </li>
+                        <li>
+                            <Link to="/search">Search</Link>
                         </li>
 
                         <li>
