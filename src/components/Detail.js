@@ -6,7 +6,7 @@ function Detail({ props }) {
             <img alt='robots' src={`https://image.tmdb.org/t/p/w200/${props.backdrop_path}`} />
             <div className=' f5 tc'>
                 <h2>{props.original_title} </h2>
-                <p>{props.media_tyep}</p>
+                <p>{props.media_type}</p>
             </div>
         </div>
     )
