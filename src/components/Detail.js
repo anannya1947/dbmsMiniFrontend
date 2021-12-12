@@ -5,7 +5,7 @@ function Detail({ props }) {
         <div className='bg-light-blue dib  br4 pd4 ma3 grow bw3 shadow=7'>
             <img alt='robots' src={`https://image.tmdb.org/t/p/w200/${props.backdrop_path}`} />
             <div className=' f5 tc'>
-                <h2>{props.name} </h2>
+                <h2>{props.original_title} </h2>
                 <p>{props.media_tyep}</p>
             </div>
         </div>
