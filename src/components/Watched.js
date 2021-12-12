@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const watched = () => {
+export const Watched = () => {
     return (
         <div>
             <h1>Watched page</h1>
