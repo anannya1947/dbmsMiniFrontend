@@ -7,7 +7,8 @@ function Search() {
 
     const submitForm = (event) => {
         event.preventDefault();
-        axios.get(`https://api.themoviedb.org/3/search/multi?api_key=2866a6acd32642defa706bf7b57cf045&language=en-US&query=${field}&page=1&include_adult=false`)
+        const api = process.env.REACT_APP_API_KEY
+        axios.get(`https://api.themoviedb.org/3/search/multi?api_key=${api}&language=en-US&query=${field}&page=1&include_adult=false`)
             .then(res => setResult(res.data))
             .catch(err => console.log(err))
         setTimeout(() => {
