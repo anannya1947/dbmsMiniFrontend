@@ -4,6 +4,7 @@ import { Header } from "./components/Header"
 import { Watchlist } from "./components/Watchlist"
 import { Watched } from "./components/Watched"
 import { Add } from "./components/Add"
+import {Login} from './components/Login'
 import Search from './components/Search'
 import "./App.css"
 import "./lib/css/all.min.css"
@@ -21,6 +22,8 @@ function App() {
         <Route path="/watched" element={<Watched />} />
 
         <Route path="/search" element={<Search />} />
+
+        <Route path="/login" element={<Login />} />
       </Routes>
     </Router>
   );

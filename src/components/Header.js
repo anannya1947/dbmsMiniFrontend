@@ -25,6 +25,11 @@ export const Header = () => {
                         <li>
                             <Link to="/add" className='btn'>+ Add</Link>
                         </li>
+
+                        <li>
+                            <Link to="/login">Login</Link>
+                        </li>
+
                     </ul>
                 </div>
             </div>
