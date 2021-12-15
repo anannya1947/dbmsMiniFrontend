@@ -41,9 +41,11 @@ function Search() {
             {
                 flag ?
                     result.results.map(details => {
-                        return (
-                            <Detail key={details.id} props={details} />
-                        )
+                        if (details.media_type === "tv" || details.media_type === "movie")
+                            return (
+                                <Detail key={details.id} props={details} />
+                            )
+
                     }) : <></>
             }
 
