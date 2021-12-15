@@ -9,12 +9,16 @@ function Search() {
         event.preventDefault();
         const api = process.env.REACT_APP_API_KEY
         axios.get(`https://api.themoviedb.org/3/search/multi?api_key=${api}&language=en-US&query=${field}&page=1&include_adult=false`)
-            .then(res => setResult(res.data))
-            .catch(err => console.log(err))
-        setTimeout(() => {
-            if (result)
+            .then(res => {
+                setResult(res.data)
                 setFlag(true)
-        }, 1000);
+            })
+            .catch(err => console.log(err))
+
+        //     setTimeout(() => {
+        //     if (result)
+        //         setFlag(true)
+        // }, 1000);
     }
 
     const [flag, setFlag] = useState(false)
