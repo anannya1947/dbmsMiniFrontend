@@ -26,7 +26,13 @@ export const Login = () => {
                     onChange={(e)=>setPassword(e.target.value)}
                 />
                 <br/>
-                <button className='btn' onClick={login}>Login</button>
+                <button className='btn' 
+                        onClick={() => {
+                            login()
+                            navigate("/search")
+                        }
+
+                }>Login</button>
             </div>
         </div>
     )
