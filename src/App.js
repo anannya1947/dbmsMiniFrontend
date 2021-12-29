@@ -15,13 +15,30 @@ import { Unregistered } from "./components/Unregistered";
 
 function App() {
 
-  const [auth, setAuth] = useState(false)
+  const [auth, setAuth] = useState(JSON.parse(localStorage.getItem("cache")).auth)
   const [token, setToken] = useState({})
+
+  useEffect(() => {
+
+    let result = JSON.parse(localStorage.getItem("cache"))
+    console.log(result)
+    setAuth(result.auth)
+    setToken(result.token)
+  }, [])
+
 
 
   function changeAuth(aut, token) {
     setAuth(aut)
     setToken(token)
+
+    const cache = {
+      auth: aut,
+      token: token
+    }
+    console.log(cache)
+
+    localStorage.setItem("cache", JSON.stringify(cache))
   }
 
   return (
