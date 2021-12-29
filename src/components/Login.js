@@ -33,6 +33,7 @@ export const Login = () => {
                         }
 
                 }>Login</button>
+                <h6>Don't have an account? <a href='/Signup'>Signup</a></h6>
             </div>
         </div>
     )
