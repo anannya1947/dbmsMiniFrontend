@@ -1,9 +1,12 @@
 import React from 'react'
 
-export const Watchlist = () => {
+export const Watchlist = ({ token }) => {
     return (
         <div>
             <h1>Watchlist Page</h1>
+            <p>{token.name}</p>
+            <p>{token.username}</p>
+            <p>{token.token}</p>
         </div>
     )
 }

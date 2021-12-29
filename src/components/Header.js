@@ -1,13 +1,13 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-export const Header = () => {
+export const Header = ({ fn }) => {
     return (
         <header>
             <div className="container">
                 <div className="inner-content">
                     <div className="brand">
-                        <Link to="/">Watchlist</Link>
+                        <Link to="/">Tempus</Link>
                     </div>
 
                     <ul className='nav-links'>
@@ -21,18 +21,19 @@ export const Header = () => {
                         <li>
                             <Link to="/search">Search</Link>
                         </li>
-
                         <li>
-                            <Link to="/add" className='btn'>+ Add</Link>
+                            <button className='btn'
+                                onClick={() => {
+                                    fn(false, {}, '')
+                                }
+                                }>Logout</button>
                         </li>
 
-                        <li>
-                            <Link to="/login">Login</Link>
-                        </li>
 
-                        <li>
-                            <Link to="/signup">Signup</Link>
-                        </li>
+
+
+
+
 
                     </ul>
                 </div>

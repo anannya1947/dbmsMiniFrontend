@@ -1,38 +1,46 @@
 import React from 'react'
-import { useState,useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import axios from 'axios'
 
-export const Login = () => {
-    const [email, setEmail]=useState("")
-    const [password, setPassword]=useState("")
+export const Login = ({ fn }) => {
+    const [username, setUsername] = useState("")
+    const [password, setPassword] = useState("")
     const navigate = useNavigate()
-    useEffect(() => {
-        if(localStorage.getItem('user-info')){
-            navigate.push("/add")
+
+    function handleLogin() {
+
+        const cred = {
+            username: username,
+            password: password
         }
-    }, [])
-    function login(){
-        console.warn(email,password)
+        axios.post('http://localhost:5001/db/login', cred)
+            .then(res => {
+
+                fn(true, res.data)
+                navigate("/")
+            })
+            .catch(err => console.log(err))
+
     }
+
     return (
         <div>
             <h1>Login</h1>
             <div className='login-div'>
-                <input type="text" placeholder="email" 
-                    onChange={(e)=>setEmail(e.target.value)}
+                <input type="text" placeholder="username"
+                    onChange={(e) => setUsername(e.target.value)}
                 />
-                <br/>
+                <br />
                 <input type="text" placeholder="password"
-                    onChange={(e)=>setPassword(e.target.value)}
+                    onChange={(e) => setPassword(e.target.value)}
                 />
-                <br/>
-                <button className='btn' 
-                        onClick={() => {
-                            login()
-                            navigate("/search")
-                        }
-
-                }>Login</button>
+                <br />
+                <button className='btn'
+                    onClick={() => {
+                        handleLogin()
+                    }
+                    }>Login</button>
                 <h6>Don't have an account? <a href='/Signup'>Signup</a></h6>
             </div>
         </div>
