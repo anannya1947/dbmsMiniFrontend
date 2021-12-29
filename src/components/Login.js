@@ -18,7 +18,7 @@ export const Login = ({ fn }) => {
             .then(res => {
 
                 fn(true, res.data)
-                navigate("/")
+                navigate("/watchlist")
             })
             .catch(err => console.log(err))
 

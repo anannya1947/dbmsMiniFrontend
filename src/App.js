@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-d
 import { Header } from "./components/Header"
 import { Watchlist } from "./components/Watchlist"
 import { Watched } from "./components/Watched"
-import { Add } from "./components/Add"
+import { Home } from "./components/Home"
 import { Login } from './components/Login'
 import Search from './components/Search'
 import "./App.css"
@@ -34,11 +34,11 @@ function App() {
 
       <Routes>
 
-        <Route path="/" element={!auth ? <Navigate to="/login" /> : <Watchlist token={token} />} />
+        <Route path="/home" element={<Home />} />
 
-        <Route path="/add" element={<Add />} />
+        <Route path="/watchlist" element={!auth ? <Navigate to="/home" /> : <Watchlist token={token} />} />
 
-        <Route path="/watched" element={<Watched />} />
+        <Route path="/watched" element={!auth ? <Navigate to="/home" /> : <Watched />} />
 
         <Route path="/search" element={<Search />} />
 
