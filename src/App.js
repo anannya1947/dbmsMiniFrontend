@@ -16,7 +16,7 @@ import { Unregistered } from "./components/Unregistered";
 function App() {
 
   const [auth, setAuth] = useState(JSON.parse(localStorage.getItem("cache")).auth)
-  const [token, setToken] = useState({})
+  const [token, setToken] = useState(JSON.parse(localStorage.getItem("cache")).token)
 
   useEffect(() => {
 
