@@ -65,7 +65,7 @@ function Detail({ props }) {
     const whichone = (props.backdrop_path) ? "backdrop" : "poster"
     return (
 
-        <div className=' standard bg-light-blue dib  br4 pd4 ma3 grow bw3 shadow=7'>
+        <div className=' standard bg-light-blue dib   pd4 ma3 grow bw3 shadow=7'>
 
             <object data="http://stackoverflow.com/does-not-exist.png" type="image/png">
                 <img className={`${whichone}`} alt='robots' src={`https://image.tmdb.org/t/p/original/${imgUrl}`} />

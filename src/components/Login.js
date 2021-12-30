@@ -17,7 +17,7 @@ export const Login = ({ fn }) => {
         axios.post('http://localhost:5001/db/login', cred)
             .then(res => {
 
-                fn(true, res.data)
+                fn(res.data)
                 navigate("/watchlist")
             })
             .catch(err => console.log(err))

@@ -12,6 +12,9 @@ export const Header = ({ fn }) => {
 
                     <ul className='nav-links'>
                         <li>
+                            <Link to="/profile">Profile</Link>
+                        </li>
+                        <li>
                             <Link to="/watchlist">Watch List</Link>
                         </li>
 
@@ -24,7 +27,7 @@ export const Header = ({ fn }) => {
                         <li>
                             <button className='btn'
                                 onClick={() => {
-                                    fn(false, {}, '')
+                                    fn({})
                                 }
                                 }>Logout</button>
                         </li>
