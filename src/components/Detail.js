@@ -2,7 +2,7 @@ import axios from 'axios'
 import React from 'react'
 import { useState, useEffect } from 'react'
 import "./detail.css"
-function Detail({ props }) {
+function Detail({ props, btn }) {
 
     const [media, setMedia] = useState({})
     const api = process.env.REACT_APP_API_KEY
@@ -73,7 +73,8 @@ function Detail({ props }) {
             <div className=' f5 tc'>
                 <h2>{title} </h2>
                 <p>{props.media_type}</p>
-                <p>{duration} min</p>
+                <p>{duration} min  {btn ? <button className='btn'>Add+</button> : <></>}</p>
+
 
             </div>
         </div>

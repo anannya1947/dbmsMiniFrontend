@@ -8,6 +8,7 @@ import { Home } from "./components/Home"
 import { Login } from './components/Login'
 import { Profile } from './components/Profile'
 import Search from './components/Search'
+import SearchReg from './components/SearchReg'
 import "./App.css"
 import "./lib/css/all.min.css"
 import { Signup } from "./components/Signup";
@@ -79,6 +80,8 @@ function App() {
         <Route path="/watched" element={!auth ? <Navigate to="/home" /> : <Watched token={token} />} />
 
         <Route path="/profile" element={!auth ? <Navigate to="/home" /> : <Profile token={token} />} />
+
+        <Route path="/searchReg" element={!auth ? <Navigate to="/home" /> : <SearchReg token={token} />} />
 
         <Route path="/search" element={<Search />} />
 

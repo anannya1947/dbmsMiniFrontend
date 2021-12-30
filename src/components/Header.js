@@ -22,7 +22,7 @@ export const Header = ({ fn }) => {
                             <Link to="/watched">Watched</Link>
                         </li>
                         <li>
-                            <Link to="/search">Search</Link>
+                            <Link to="/searchReg">Search</Link>
                         </li>
                         <li>
                             <button className='btn'
