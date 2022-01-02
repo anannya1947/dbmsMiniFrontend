@@ -8,8 +8,8 @@ export const Login = ({ fn }) => {
     const [password, setPassword] = useState("")
     const navigate = useNavigate()
 
-    function handleLogin() {
-
+    const handleLogin = (e) => {
+        e.preventDefault()
         const cred = {
             username: username,
             password: password
@@ -27,22 +27,22 @@ export const Login = ({ fn }) => {
     return (
         <div>
             <h1>Login</h1>
-            <div className='login-div'>
-                <input type="text" placeholder="username"
-                    onChange={(e) => setUsername(e.target.value)}
-                />
-                <br />
-                <input type="text" placeholder="password"
-                    onChange={(e) => setPassword(e.target.value)}
-                />
-                <br />
-                <button className='btn'
-                    onClick={() => {
-                        handleLogin()
-                    }
-                    }>Login</button>
-                <h6>Don't have an account? <a href='/Signup'>Signup</a></h6>
-            </div>
+            <form onSubmit={handleLogin}>
+                <div className='login-div'>
+                    <input type="text" placeholder="username"
+                        onChange={(e) => setUsername(e.target.value)}
+                        required
+                    />
+                    <br />
+                    <input type="password" placeholder="password"
+                        onChange={(e) => setPassword(e.target.value)}
+                        required
+                    />
+                    <br />
+                    <input type="submit" value="Login" className="btn btn-primary" />
+                    <h6>Don't have an account? <a href='/Signup'>Signup</a></h6>
+                </div>
+            </form>
         </div>
     )
 }
