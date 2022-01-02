@@ -27,7 +27,7 @@ export const Header = ({ fn }) => {
                         <li>
                             <button className='btn'
                                 onClick={() => {
-                                    fn({})
+                                    fn('', false)
                                 }
                                 }>Logout</button>
                         </li>

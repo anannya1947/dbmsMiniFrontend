@@ -14,53 +14,74 @@ import "./lib/css/all.min.css"
 import { Signup } from "./components/Signup";
 import { useState, useEffect, useReducer } from 'react'
 import { Unregistered } from "./components/Unregistered";
+import jwt from 'jsonwebtoken'
 
 function App() {
 
   function getAuth() {
-    if (localStorage.getItem("cache")) {
-      let result = JSON.parse(localStorage.getItem("cache"))
-      return result.token.auth
+    if (localStorage.getItem("auth")) {
+      let result = localStorage.getItem("auth")
+      let secret = process.env.REACT_APP_SECRET
+      const decodedToken = jwt.verify(result, secret)
+      console.log(decodedToken, "this is decoded token for auth ")
+      return decodedToken.auth
 
     }
     return false;
   }
   const [auth, setAuth] = useState(getAuth())
 
+  function getDecode() {
+    if (localStorage.getItem("auth")) {
+      let result = localStorage.getItem("auth")
+      let secret = process.env.REACT_APP_SECRET
+      const decodedToken = jwt.verify(result, secret)
+      console.log(decodedToken, "this is decoded token for auth ")
+      return decodedToken
 
-  function getToken() {
-    if (localStorage.getItem("cache")) {
-      let result = JSON.parse(localStorage.getItem("cache"));
-      return result.token
     }
     return {};
+  }
+  const [dtoken, setDecode] = useState(getDecode())
+
+  function getToken() {
+    if (localStorage.getItem("auth")) {
+      let result = localStorage.getItem("auth")
+
+      return result
+    }
+    return '';
   }
   const [token, setToken] = useState(getToken())
 
   useEffect(() => {
-    if (localStorage.getItem("cache")) {
-      let result = JSON.parse(localStorage.getItem("cache"))
+    if (localStorage.getItem("auth")) {
+      let result = localStorage.getItem("auth")
+      setToken(result)
       console.log(result)
-      setAuth(result.token.auth)
-      setToken(result.token)
+      let secret = process.env.REACT_APP_SECRET
+      const decodedToken = jwt.verify(result, secret)
+      setDecode(decodedToken)
+      setAuth(decodedToken.auth)
+
 
     } else {
-      const def = {
-        token: { auth: false }
-      }
-      localStorage.setItem("cache", JSON.stringify(def))
+
+      localStorage.setItem("auth", '')
     }
   }, [])
 
-  function changeAuth(token) {
-    setAuth(token.auth)
+  function changeAuth(token, auth) {
+    let decodedToken = {}
     setToken(token)
-    const cache = {
-      token: token
+    if (token) {
+      let secret = process.env.REACT_APP_SECRET
+      decodedToken = jwt.verify(token, secret)
     }
-    console.log(cache)
+    setDecode(decodedToken)
+    setAuth(auth)
 
-    localStorage.setItem("cache", JSON.stringify(cache))
+    localStorage.setItem("auth", token)
   }
 
   return (
@@ -75,13 +96,13 @@ function App() {
 
         <Route path="/home" element={<Home />} />
 
-        <Route path="/watchlist" element={!auth ? <Navigate to="/home" /> : <Watchlist token={token} />} />
+        <Route path="/watchlist" element={!auth ? <Navigate to="/home" /> : <Watchlist token={dtoken} />} />
 
-        <Route path="/watched" element={!auth ? <Navigate to="/home" /> : <Watched token={token} />} />
+        <Route path="/watched" element={!auth ? <Navigate to="/home" /> : <Watched token={dtoken} />} />
 
-        <Route path="/profile" element={!auth ? <Navigate to="/home" /> : <Profile token={token} />} />
+        <Route path="/profile" element={!auth ? <Navigate to="/home" /> : <Profile token={dtoken} />} />
 
-        <Route path="/searchReg" element={!auth ? <Navigate to="/home" /> : <SearchReg token={token} />} />
+        <Route path="/searchReg" element={!auth ? <Navigate to="/home" /> : <SearchReg token={dtoken} />} />
 
         <Route path="/search" element={<Search />} />
 
