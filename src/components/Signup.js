@@ -11,7 +11,8 @@ export const Signup = () => {
     const [password, setPassword] = useState('')
     const [age, setAge] = useState(0)
 
-    const submitRegister = () =>{
+    const submitRegister = (e) =>{
+        e.preventDefault()
         Axios.post('http://localhost:5001/db/register', {
             name: name,
             age : age,
@@ -29,6 +30,7 @@ export const Signup = () => {
     return (
         <div>
             <h1>Register</h1>
+            <form onSubmit={submitRegister}>
             <div className='login-div'>
                 <input type="text" placeholder="name" onChange={(e)=>{
                     setName(e.target.value)
@@ -42,21 +44,17 @@ export const Signup = () => {
                     setUsername(e.target.value)
                 }}/>
                 <br/>
-                <input type="text" placeholder="email" onChange={(e)=>{
+                <input type="email" placeholder="email" onChange={(e)=>{
                     setEmail(e.target.value)
                 }}/>
                 <br/>
-                <input type="text" placeholder="password" onChange={(e)=>{
+                <input type="password" placeholder="password" onChange={(e)=>{
                     setPassword(e.target.value)
                 }}/>
                 <br/>
-                <button className='btn' 
-                        onClick={() => {
-                            // navigate("/search")
-                            submitRegister()
-                        }
-                }>Submit</button>
+                <input type="submit" value="Register" className="btn btn-primary" />
                 </div>
+            </form>
         </div>
     )
 }
