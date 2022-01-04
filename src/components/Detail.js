@@ -71,7 +71,7 @@ function Detail({ props, btn }) {
             <img className={`${whichone}`} alt='Not Available' src={`https://image.tmdb.org/t/p/original/${imgUrl}`} />
 
             <div className=' f5 tc'>
-                <h2>{title} </h2>
+                <h4>{title} </h4>
                 <p>{props.media_type}</p>
                 <p>{duration} min  {btn ? <button className='btn'>Add+</button> : <></>}</p>
 
