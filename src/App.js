@@ -19,8 +19,8 @@ import jwt from 'jsonwebtoken'
 function App() {
 
   function getAuth() {
-    if (localStorage.getItem("auth")) {
-      let result = localStorage.getItem("auth")
+    if (sessionStorage.getItem("auth")) {
+      let result = sessionStorage.getItem("auth")
       let secret = process.env.REACT_APP_SECRET
       var decodedToken
       jwt.verify(result, secret, function (err, decode) {
@@ -39,8 +39,8 @@ function App() {
   const [auth, setAuth] = useState(getAuth())
 
   function getDecode() {
-    if (localStorage.getItem("auth")) {
-      let result = localStorage.getItem("auth")
+    if (sessionStorage.getItem("auth")) {
+      let result = sessionStorage.getItem("auth")
       let secret = process.env.REACT_APP_SECRET
       var decodedToken
       jwt.verify(result, secret, function (err, decode) {
@@ -59,8 +59,8 @@ function App() {
   const [dtoken, setDecode] = useState(getDecode())
 
   function getToken() {
-    if (localStorage.getItem("auth")) {
-      let result = localStorage.getItem("auth")
+    if (sessionStorage.getItem("auth")) {
+      let result = sessionStorage.getItem("auth")
 
       return result
     }
@@ -69,8 +69,8 @@ function App() {
   const [token, setToken] = useState(getToken())
 
   useEffect(() => {
-    if (localStorage.getItem("auth")) {
-      let result = localStorage.getItem("auth")
+    if (sessionStorage.getItem("auth")) {
+      let result = sessionStorage.getItem("auth")
       setToken(result)
       console.log(result)
       let secret = process.env.REACT_APP_SECRET
@@ -92,7 +92,7 @@ function App() {
 
     } else {
 
-      localStorage.setItem("auth", '')
+      sessionStorage.setItem("auth", '')
     }
   }, [])
 
@@ -106,7 +106,7 @@ function App() {
     setDecode(decodedToken)
     setAuth(auth)
 
-    localStorage.setItem("auth", token)
+    sessionStorage.setItem("auth", token)
   }
 
   return (
