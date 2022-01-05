@@ -1,9 +1,15 @@
 import axios from 'axios'
 import React from 'react'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import "./detail.css"
+import { GlobalContext } from '../context/GlobalState'
+
 function Detail({ props, btn }) {
 
+    const { addMovieToWatchlist, watchlist } = useContext(GlobalContext)
+
+    //let storedMovie = watchlist.find(o => o.id === props.id)
+    //const watchlistDisabled = storedMovie? true: false
     const [media, setMedia] = useState({})
     const api = process.env.REACT_APP_API_KEY
     const type = props.media_type
@@ -73,9 +79,11 @@ function Detail({ props, btn }) {
             <div className=' f5 tc'>
                 <h4>{title} </h4>
                 <p>{props.media_type}</p>
-                <p>{duration} min  {btn ? <button className='btn'>Add+</button> : <></>}</p>
-
-
+                <p>{duration} min  
+                {btn ? <button 
+                        className='btn'
+                        //disabled={watchlistDisabled} 
+                        onClick={()=> addMovieToWatchlist(props)}>Add+</button> : <></>}</p>
             </div>
         </div>
     )

@@ -15,7 +15,7 @@ import { Signup } from "./components/Signup";
 import { useState, useEffect, useReducer } from 'react'
 import { Unregistered } from "./components/Unregistered";
 import jwt from 'jsonwebtoken'
-
+import {GlobalProvider} from './context/GlobalState'
 function App() {
 
   function getAuth() {
@@ -110,6 +110,7 @@ function App() {
   }
 
   return (
+    <GlobalProvider>
     <Router>
 
       {
@@ -137,6 +138,7 @@ function App() {
 
       </Routes>
     </Router>
+    </GlobalProvider>
   );
 }
 
