@@ -22,9 +22,16 @@ function App() {
     if (localStorage.getItem("auth")) {
       let result = localStorage.getItem("auth")
       let secret = process.env.REACT_APP_SECRET
-      const decodedToken = jwt.verify(result, secret)
-      console.log(decodedToken, "this is decoded token for auth ")
-      return decodedToken.auth
+      var decodedToken
+      jwt.verify(result, secret, function (err, decode) {
+        if (err) decodedToken = {}
+        decodedToken = decode
+      })
+      if (decodedToken) {
+        console.log(decodedToken, "this is decoded token for auth ")
+        return decodedToken.auth
+      }
+      return false;
 
     }
     return false;
@@ -35,9 +42,16 @@ function App() {
     if (localStorage.getItem("auth")) {
       let result = localStorage.getItem("auth")
       let secret = process.env.REACT_APP_SECRET
-      const decodedToken = jwt.verify(result, secret)
-      console.log(decodedToken, "this is decoded token for auth ")
-      return decodedToken
+      var decodedToken
+      jwt.verify(result, secret, function (err, decode) {
+        if (err) decodedToken = {}
+        decodedToken = decode
+      })
+      if (decodedToken) {
+        console.log(decodedToken, "this is decoded token for auth ")
+        return decodedToken
+      }
+      return {}
 
     }
     return {};
@@ -60,9 +74,20 @@ function App() {
       setToken(result)
       console.log(result)
       let secret = process.env.REACT_APP_SECRET
-      const decodedToken = jwt.verify(result, secret)
-      setDecode(decodedToken)
-      setAuth(decodedToken.auth)
+      var decodedToken
+      jwt.verify(result, secret, function (err, decode) {
+        if (err) decodedToken = {}
+        decodedToken = decode
+      })
+
+      if (decodedToken) {
+        setDecode(decodedToken)
+        setAuth(decodedToken.auth)
+      }
+      else {
+        setDecode({})
+        setAuth(false)
+      }
 
 
     } else {
