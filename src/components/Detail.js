@@ -3,6 +3,7 @@ import React from 'react'
 import { useState, useEffect, useContext } from 'react'
 import "./detail.css"
 import { GlobalContext } from '../context/GlobalState'
+import { Watchlist } from './Watchlist'
 
 function Detail({ props, btn }) {
 
@@ -79,11 +80,12 @@ function Detail({ props, btn }) {
             <div className=' f5 tc'>
                 <h4>{title} </h4>
                 <p>{props.media_type}</p>
-                <p>{duration} min  
+                <p>{duration} min  </p>
                 {btn ? <button 
                         className='btn'
                         //disabled={watchlistDisabled} 
-                        onClick={()=> addMovieToWatchlist(props)}>Add+</button> : <></>}</p>
+                        onClick={()=> <Watchlist props={props}/>}
+                        >Watch</button> : <></>}
             </div>
         </div>
     )

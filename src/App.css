@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Ubuntu:wght@500&family=Work+Sans:wght@300&display=swap');
 :root {
   --primary: #032541;
   --secondary: #21d07a;
@@ -11,7 +12,28 @@ body {
   background-color:#092966;
   color:#fff
 }
-
+h1{
+  font-family: 'Ubuntu', sans-serif;
+}
+h3{
+  overflow: hidden;
+  border-right: .15em solid orange;
+  white-space: nowrap;
+  margin: 0 auto;
+  letter-spacing: .15em;
+    text-align: center;
+    padding-top: 0px;
+    animation: typewriter 4s steps(44) 1s 1 normal both,
+             blinkTextCursor 500ms steps(44) infinite normal;
+}
+@keyframes typewriter{
+  from{width: 15em;}
+  to{width: 20em;}
+}
+@keyframes blinkTextCursor{
+  from{border-right-color: rgba(255,255,255,.75);}
+  to{border-right-color: transparent;}
+}
 .container {
   padding-right: 15px;
   padding-left: 15px;
@@ -288,4 +310,11 @@ header .nav-links li:last-child {
   color: #c4c4c4;
   font-size: 3rem;
   text-align: center;
+}
+
+input{
+  height: 45px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border-color: black;
 }

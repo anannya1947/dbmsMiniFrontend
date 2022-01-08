@@ -2,6 +2,7 @@ import React from 'react'
 import { useState } from 'react'
 import axios from 'axios'
 import Detail from './Detail'
+import bgImg from '../assets/bgImg.jpg'
 
 function SearchReg() {
 
@@ -28,9 +29,20 @@ function SearchReg() {
     return (
         <div>
 
-            <form align="center" width="50%" margin-left="25%" onSubmit={submitForm}>
+            <form align="center" width="50%" margin-left="25%" onSubmit={submitForm}
+            style={{
+                backgroundImage: `url(${bgImg})`,
+                backgroundPositionX: "200px",
+                backgroundPositionY: "0px",
+                height: "180px"
+            }}>
                 <div className='pa2'>
-                    <input className='pa4 ba b--green bg-lightest-blue' type='search'
+                    <input style={{
+                        height: "60px",
+                        width: "250px",
+                        textAlign: "center",
+                        marginTop: "20px",
+                    }} type='search'
                         placeholder='Search for Movies/Shows'
                         onChange={(e) => setField(e.target.value)} />
                 </div>

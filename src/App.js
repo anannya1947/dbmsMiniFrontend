@@ -120,7 +120,7 @@ function App() {
 
       <Routes>
 
-        <Route path="/home" element={<Home />} />
+        <Route path="/home" element={<Home token={dtoken}/>} />
 
         <Route path="/watchlist" element={!auth ? <Navigate to="/home" /> : <Watchlist token={dtoken} />} />
 
