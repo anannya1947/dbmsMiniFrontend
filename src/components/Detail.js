@@ -47,7 +47,7 @@ function Detail({ props, btn, token }) {
             return;
         }
         handleAdd()
-    }, [status, menu])
+    }, [status])
 
     async function menuStatus(m, s) {
         console.log("status passd", s)
