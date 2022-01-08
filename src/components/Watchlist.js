@@ -9,7 +9,7 @@ export const Watchlist = ({ token, tk }) => {
     useEffect(() => {
         async function getWatch() {
             try {
-                let res = await axios.get("http://localhost:5001/db/add", {
+                let res = await axios.get("http://localhost:5001/db/add/1", {
                     headers: {
                         authorization: `bearer ${tk}`
                     }

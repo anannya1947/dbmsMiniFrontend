@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React from 'react'
-import { useState, useEffect, useContext } from 'react'
+import { useState, useEffect, useContext, useRef } from 'react'
 import "./detail.css"
 import { GlobalContext } from '../context/GlobalState'
 import { Watchlist } from './Watchlist'
@@ -37,10 +37,24 @@ function Detail({ props, btn, token }) {
     const [media, setMedia] = useState({})
     const [menu, setMenu] = useState(false)
     const [status, setStatus] = useState("")
-    function menuStatus(m, s) {
+    const [flag, setFlag] = useState(btn)
+
+    const firstUpdate = useRef(true);
+
+    useEffect(() => {
+        if (firstUpdate.current) {
+            firstUpdate.current = false;
+            return;
+        }
+        handleAdd()
+    }, [status, menu])
+
+    async function menuStatus(m, s) {
+        console.log("status passd", s)
         setMenu(m)
         setStatus(s)
-        handleAdd()
+        console.log("status set:", status)
+        // handleAdd()
     }
     const api = process.env.REACT_APP_API_KEY
     const type = props.media_type
@@ -111,10 +125,13 @@ function Detail({ props, btn, token }) {
                 <h4>{title} </h4>
                 <p>{props.media_type}</p>
                 <p>{duration} min  </p>
-                {btn ? <button
+                {flag ? <button
                     className='btn'
                     //disabled={watchlistDisabled} 
-                    onClick={() => setMenu(true)}
+                    onClick={() => {
+                        setFlag(false)
+                        setMenu(true)
+                    }}
                 >ADD</button> : <></>}
                 {
                     menu ? <Menu fn={menuStatus} /> : <></>
