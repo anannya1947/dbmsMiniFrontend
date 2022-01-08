@@ -15,7 +15,7 @@ import { Signup } from "./components/Signup";
 import { useState, useEffect, useReducer } from 'react'
 import { Unregistered } from "./components/Unregistered";
 import jwt from 'jsonwebtoken'
-import {GlobalProvider} from './context/GlobalState'
+import { GlobalProvider } from './context/GlobalState'
 function App() {
 
   function getAuth() {
@@ -111,33 +111,33 @@ function App() {
 
   return (
     <GlobalProvider>
-    <Router>
+      <Router>
 
-      {
-        auth ?
-          <Header fn={changeAuth} /> : <Unregistered />
-      }
+        {
+          auth ?
+            <Header fn={changeAuth} /> : <Unregistered />
+        }
 
-      <Routes>
+        <Routes>
 
-        <Route path="/home" element={<Home token={dtoken}/>} />
+          <Route path="/home" element={<Home token={dtoken} />} />
 
-        <Route path="/watchlist" element={!auth ? <Navigate to="/home" /> : <Watchlist token={dtoken} />} />
+          <Route path="/watchlist" element={!auth ? <Navigate to="/home" /> : <Watchlist token={dtoken} tk={token} />} />
 
-        <Route path="/watched" element={!auth ? <Navigate to="/home" /> : <Watched token={dtoken} />} />
+          <Route path="/watched" element={!auth ? <Navigate to="/home" /> : <Watched token={dtoken} tk={token} />} />
 
-        <Route path="/profile" element={!auth ? <Navigate to="/home" /> : <Profile token={dtoken} />} />
+          <Route path="/profile" element={!auth ? <Navigate to="/home" /> : <Profile token={dtoken} tk={token} />} />
 
-        <Route path="/searchReg" element={!auth ? <Navigate to="/home" /> : <SearchReg token={dtoken} />} />
+          <Route path="/searchReg" element={!auth ? <Navigate to="/home" /> : <SearchReg token={dtoken} />} />
 
-        <Route path="/search" element={<Search />} />
+          <Route path="/search" element={<Search />} />
 
-        <Route path="/login" element={<Login fn={changeAuth} />} />
+          <Route path="/login" element={<Login fn={changeAuth} />} />
 
-        <Route path="/signup" element={<Signup />} />
+          <Route path="/signup" element={<Signup />} />
 
-      </Routes>
-    </Router>
+        </Routes>
+      </Router>
     </GlobalProvider>
   );
 }

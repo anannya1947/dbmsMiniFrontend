@@ -2,14 +2,18 @@ import axios from 'axios'
 import React, { useState, useEffect } from 'react'
 import DetailWatch from './DetailWatch'
 
-export const Watchlist = ({ token }) => {
+export const Watchlist = ({ token, tk }) => {
     const [flag, setFlag] = useState(false)
     const [result, setResult] = useState([])
 
     useEffect(() => {
         async function getWatch() {
             try {
-                let res = await axios.get("http://localhost:5001/db/add")
+                let res = await axios.get("http://localhost:5001/db/add", {
+                    headers: {
+                        authorization: `bearer ${tk}`
+                    }
+                })
                 setResult(res.data)
                 setFlag(true)
             }
