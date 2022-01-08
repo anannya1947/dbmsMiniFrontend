@@ -4,7 +4,7 @@ import axios from 'axios'
 import Detail from './Detail'
 import bgImg from '../assets/bgImg.jpg'
 
-function SearchReg() {
+function SearchReg({ token }) {
 
     const submitForm = (event) => {
         event.preventDefault();
@@ -30,12 +30,12 @@ function SearchReg() {
         <div>
 
             <form align="center" width="50%" margin-left="25%" onSubmit={submitForm}
-            style={{
-                backgroundImage: `url(${bgImg})`,
-                backgroundPositionX: "200px",
-                backgroundPositionY: "0px",
-                height: "180px"
-            }}>
+                style={{
+                    backgroundImage: `url(${bgImg})`,
+                    backgroundPositionX: "200px",
+                    backgroundPositionY: "0px",
+                    height: "180px"
+                }}>
                 <div className='pa2'>
                     <input style={{
                         height: "60px",
@@ -56,7 +56,7 @@ function SearchReg() {
                         if (details.media_type === "tv" || details.media_type === "movie")
                             return (
 
-                                <Detail key={details.id} props={details} btn={"true"} />
+                                <Detail key={details.id} props={details} btn={"true"} token={token} />
 
                             )
 

@@ -4,14 +4,44 @@ import { useState, useEffect, useContext } from 'react'
 import "./detail.css"
 import { GlobalContext } from '../context/GlobalState'
 import { Watchlist } from './Watchlist'
+import Menu from './Menu'
 
-function Detail({ props, btn }) {
+function Detail({ props, btn, token }) {
 
     const { addMovieToWatchlist, watchlist } = useContext(GlobalContext)
+
+    function handleAdd() {
+        let date = new Date()
+        let year = date.getFullYear().toString()
+        let month = (date.getMonth() + 1).toString()
+        let day = date.getDate().toString()
+        let d = year + "-" + month + "-" + day
+        let details = {
+            title: title,
+            imgurl: imgUrl,
+            media_type: props.media_type,
+            media_id: media.id,
+            viewer_id: token.id,
+            duration: duration,
+            time: d,
+            status: status
+        }
+        console.log(details)
+        axios.post("http://localhost:5001/db/add", details)
+            .then(res => console.log(res))
+            .catch(error => console.log(error))
+    }
 
     //let storedMovie = watchlist.find(o => o.id === props.id)
     //const watchlistDisabled = storedMovie? true: false
     const [media, setMedia] = useState({})
+    const [menu, setMenu] = useState(false)
+    const [status, setStatus] = useState("")
+    function menuStatus(m, s) {
+        setMenu(m)
+        setStatus(s)
+        handleAdd()
+    }
     const api = process.env.REACT_APP_API_KEY
     const type = props.media_type
     var media_id = props.id
@@ -81,11 +111,14 @@ function Detail({ props, btn }) {
                 <h4>{title} </h4>
                 <p>{props.media_type}</p>
                 <p>{duration} min  </p>
-                {btn ? <button 
-                        className='btn'
-                        //disabled={watchlistDisabled} 
-                        onClick={()=> <Watchlist props={props}/>}
-                        >Watch</button> : <></>}
+                {btn ? <button
+                    className='btn'
+                    //disabled={watchlistDisabled} 
+                    onClick={() => setMenu(true)}
+                >ADD</button> : <></>}
+                {
+                    menu ? <Menu fn={menuStatus} /> : <></>
+                }
             </div>
         </div>
     )
