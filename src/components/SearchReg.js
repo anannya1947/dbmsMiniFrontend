@@ -4,7 +4,7 @@ import axios from 'axios'
 import Detail from './Detail'
 import bgImg from '../assets/bgImg.jpg'
 
-function SearchReg({ token }) {
+function SearchReg({ token, tk }) {
 
     const submitForm = (event) => {
         event.preventDefault();
@@ -56,7 +56,7 @@ function SearchReg({ token }) {
                         if (details.media_type === "tv" || details.media_type === "movie")
                             return (
 
-                                <Detail key={details.id} props={details} btn={"true"} token={token} />
+                                <Detail key={details.id} props={details} btn={"true"} token={token} tk={tk} />
 
                             )
 

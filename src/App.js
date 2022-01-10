@@ -128,7 +128,7 @@ function App() {
 
           <Route path="/profile" element={!auth ? <Navigate to="/home" /> : <Profile token={dtoken} tk={token} />} />
 
-          <Route path="/searchReg" element={!auth ? <Navigate to="/home" /> : <SearchReg token={dtoken} />} />
+          <Route path="/searchReg" element={!auth ? <Navigate to="/home" /> : <SearchReg token={dtoken} tk={token} />} />
 
           <Route path="/search" element={<Search />} />
 

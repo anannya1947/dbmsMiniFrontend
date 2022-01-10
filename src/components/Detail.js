@@ -6,7 +6,7 @@ import { GlobalContext } from '../context/GlobalState'
 import { Watchlist } from './Watchlist'
 import Menu from './Menu'
 
-function Detail({ props, btn, token }) {
+function Detail({ props, btn, token, tk }) {
 
     const { addMovieToWatchlist, watchlist } = useContext(GlobalContext)
 
@@ -28,8 +28,26 @@ function Detail({ props, btn, token }) {
         }
         console.log(details)
         axios.post("http://localhost:5001/db/add", details)
-            .then(res => console.log(res))
+            .then(res => {
+                console.log(res)
+                let rec = {
+                    media_id: media.id,
+                    media_type: props.media_type
+                }
+                console.log("rewc:", rec)
+                axios.post("http://localhost:5001/db/recomm", rec, {
+                    headers: {
+                        authorization: `bearer ${tk}`
+                    }
+                }).then(res2 => console.log("sucess", res2))
+                    .catch(error2 => console.log(error2))
+
+
+
+            })
             .catch(error => console.log(error))
+
+
     }
 
     //let storedMovie = watchlist.find(o => o.id === props.id)

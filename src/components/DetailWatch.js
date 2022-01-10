@@ -74,18 +74,18 @@ function DetailWatch({ props, btn, token }) {
     if (type === "tv" || type === "movie") {
 
         if (type === "tv") {
-            title = props.name
+            title = media.name
             let epRunTime = media.episode_run_time
             let noOfEp = media.number_of_episodes
             duration = epRunTime * noOfEp
             if (title === null)
-                title = props.original_name
+                title = media.original_name
         }
         if (type === "movie") {
-            title = props.title
+            title = media.title
             duration = media.runtime
             if (title === null)
-                title = props.original_title
+                title = media.original_title
         }
     }
     const imgUrl = (media.backdrop_path) ? media.backdrop_path : media.poster_path
@@ -103,8 +103,8 @@ function DetailWatch({ props, btn, token }) {
                 <p>{duration} min  </p>
                 {btn ? <button
                     className='btn'
-                    //disabled={watchlistDisabled} 
-                    onClick={() => handleAdd()}
+                //disabled={watchlistDisabled} 
+                // onClick={() => handleAdd()}
                 >Watch</button> : <></>}
             </div>
         </div>

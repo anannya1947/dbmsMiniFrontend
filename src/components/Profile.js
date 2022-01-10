@@ -73,18 +73,22 @@ export const Profile = ({ token, tk }) => {
                             }
                         </p>
                     </div>
+                    <br></br>
                     <div>
-                        {
-                            recomm.map(details => {
-                                if (details.media_type === "tv" || details.media_type === "movie")
-                                    return (
+                        <h2>Recommendations</h2>
+                        <div>
+                            {
+                                recomm.map(details => {
+                                    if (details.media_type === "tv" || details.media_type === "movie")
+                                        return (
 
-                                        <DetailRecomm key={details.entry_id} props={details} btn={"true"} token={token} />
+                                            <DetailRecomm key={details.entry_id} props={details} btn={"true"} token={token} />
 
-                                    )
+                                        )
 
-                            })
-                        }
+                                })
+                            }
+                        </div>
                     </div>
                 </div> : <></>
             }

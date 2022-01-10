@@ -103,8 +103,8 @@ function DetailRecomm({ props, btn, token }) {
                 <p>{duration} min  </p>
                 {btn ? <button
                     className='btn'
-                    //disabled={watchlistDisabled} 
-                    onClick={() => handleAdd()}
+                //disabled={watchlistDisabled} 
+                // onClick={() => handleAdd()}
                 >Watch</button> : <></>}
             </div>
         </div>
