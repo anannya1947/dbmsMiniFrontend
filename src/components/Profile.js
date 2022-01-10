@@ -38,12 +38,33 @@ export const Profile = ({ token, tk }) => {
 
         }
         getRecomm()
+        async function getTime() {
+            try {
+                let res = await axios.get("http://localhost:5001/db/total_time", {
+                    headers: {
+                        authorization: `bearer ${tk}`
+                    }
+                })
+                setTime(res.data[0])
+                console.log("tiem date", res.data[0])
+
+
+            }
+            catch (error) {
+                console.log(error);
+            }
+
+        }
+        getTime()
 
     }, [])
 
     const [result, setResult] = useState([])
     const [recomm, setRecomm] = useState([])
+    const [time, setTime] = useState([])
     const [flag, setFlag] = useState(false)
+    // var dateStr = JSON.parse(result.created_on);
+    // var date = new Date(dateStr);
     return (
         <div>
             {
@@ -70,6 +91,30 @@ export const Profile = ({ token, tk }) => {
                             Number of wishlisted shows:
                             {
                                 result.shows_wishlisted
+                            }
+                        </p>
+                        <p>
+                            Number of watched shows:
+                            {
+                                time.shows_watched
+                            }
+                        </p>
+                        <p>
+                            Number of watched movies:
+                            {
+                                time.movies_watched
+                            }
+                        </p>
+                        <p>
+                            Time wasted on shows:
+                            {
+                                time.tv_time
+                            }
+                        </p>
+                        <p>
+                            Time wasted on movies:
+                            {
+                                time.movie_time
                             }
                         </p>
                     </div>

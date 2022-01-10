@@ -24,8 +24,10 @@ function App() {
       let secret = process.env.REACT_APP_SECRET
       var decodedToken
       jwt.verify(result, secret, function (err, decode) {
-        if (err) decodedToken = {}
-        decodedToken = decode
+        if (err) { decodedToken = {} }
+        else {
+          decodedToken = decode
+        }
       })
       if (decodedToken) {
         console.log(decodedToken, "this is decoded token for auth ")
@@ -44,8 +46,11 @@ function App() {
       let secret = process.env.REACT_APP_SECRET
       var decodedToken
       jwt.verify(result, secret, function (err, decode) {
-        if (err) decodedToken = {}
-        decodedToken = decode
+        if (err) { decodedToken = {} }
+        else {
+          decodedToken = decode
+        }
+
       })
       if (decodedToken) {
         console.log(decodedToken, "this is decoded token for auth ")

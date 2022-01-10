@@ -34,6 +34,10 @@ function Detail({ props, btn, token, tk }) {
                     media_id: media.id,
                     media_type: props.media_type
                 }
+                let dur = {
+                    media_type: props.media_type,
+                    duration: duration
+                }
                 console.log("rewc:", rec)
                 if (status === "watched") {
                     axios.post("http://localhost:5001/db/recomm", rec, {
@@ -43,6 +47,13 @@ function Detail({ props, btn, token, tk }) {
                     }).then(res2 => console.log("sucess", res2))
                         .catch(error2 => console.log(error2))
 
+                    axios.put("http://localhost:5001/db/duration", dur, {
+                        headers: {
+                            authorization: `bearer ${tk}`
+                        }
+
+                    }).then(res3 => console.log("success for duration", res3))
+                        .catch(error3 => console.log(error3))
                 }
 
             })
