@@ -55,6 +55,18 @@ function Detail({ props, btn, token, tk }) {
                     }).then(res3 => console.log("success for duration", res3))
                         .catch(error3 => console.log(error3))
                 }
+                if (status === "watchlist") {
+                    const wish = {
+                        media_type: props.media_type
+                    }
+                    axios.put("http://localhost:5001/db/profile", wish, {
+                        headers: {
+                            authorization: `bearer ${tk}`
+                        }
+
+                    }).then(res4 => console.log("success for duration", res4))
+                        .catch(error4 => console.log(error4))
+                }
 
             })
             .catch(error => console.log(error))

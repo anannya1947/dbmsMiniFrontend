@@ -63,6 +63,13 @@ export const Profile = ({ token, tk }) => {
     const [recomm, setRecomm] = useState([])
     const [time, setTime] = useState([])
     const [flag, setFlag] = useState(false)
+    var json = `"${result.created_on}"`
+    var dateStr = JSON.parse(json)
+    var date = new Date(dateStr)
+    let year = date.getFullYear().toString()
+    let month = (date.getMonth() + 1).toString()
+    let day = date.getDate().toString()
+    let d = day + "-" + month + "-" + year
     // var dateStr = JSON.parse(result.created_on);
     // var date = new Date(dateStr);
     return (
@@ -78,7 +85,7 @@ export const Profile = ({ token, tk }) => {
                         <p>
                             Date joined:
                             {
-                                result.created_on
+                                d
                             }
                         </p>
                         <p>
