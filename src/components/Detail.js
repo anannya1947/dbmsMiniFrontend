@@ -35,14 +35,15 @@ function Detail({ props, btn, token, tk }) {
                     media_type: props.media_type
                 }
                 console.log("rewc:", rec)
-                axios.post("http://localhost:5001/db/recomm", rec, {
-                    headers: {
-                        authorization: `bearer ${tk}`
-                    }
-                }).then(res2 => console.log("sucess", res2))
-                    .catch(error2 => console.log(error2))
+                if (status === "watched") {
+                    axios.post("http://localhost:5001/db/recomm", rec, {
+                        headers: {
+                            authorization: `bearer ${tk}`
+                        }
+                    }).then(res2 => console.log("sucess", res2))
+                        .catch(error2 => console.log(error2))
 
-
+                }
 
             })
             .catch(error => console.log(error))
