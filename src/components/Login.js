@@ -45,6 +45,7 @@ export const Login = ({ fn }) => {
                     style={{
                         textAlign: "center",
                         color: "orange",
+                        textShadow: "0 0 6px black",
                         paddingTop: "40px",
                         fontWeight: "bold",
                     }}>Login</h1>
@@ -86,19 +87,6 @@ export const Login = ({ fn }) => {
                         }}>Signup</a></h6>
             </section>
 
-            <section className="footer"
-                style={{
-                    left: "0",
-                    bottom: "0",
-                    width: "100%",
-                    backgroundColor: "black",
-                    color: "lightgreen",
-                    textAlign: "center",
-                    height: "70px",
-                    paddingTop: "20px"
-                }}>
-                Copyright © 2022 by Tempus
-            </section>
         </div>
     )
 }

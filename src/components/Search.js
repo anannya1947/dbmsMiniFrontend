@@ -38,18 +38,21 @@ function Search() {
                     <input type="submit" value="Search Database" className="btn btn-primary" />
                 </div>
             </form>
-            {
-                flag ?
-                    result.results.map(details => {
-                        if (details.media_type === "tv" || details.media_type === "movie")
-                            return (
+            <div>
+                {
+                    flag ?
+                        result.results.map(details => {
+                            if (details.media_type === "tv" || details.media_type === "movie")
+                                return (
 
-                                <Detail key={details.id} props={details} />
+                                    <Detail key={details.id} props={details} />
 
-                            )
+                                )
 
-                    }) : <></>
-            }
+                        }) : <div></div>
+                }
+            </div>
+
 
 
 

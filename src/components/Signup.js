@@ -46,6 +46,7 @@ export const Signup = () => {
                     style={{
                         textAlign: "center",
                         color: "orange",
+                        textShadow: "0 0 8px black",
                         paddingTop: "40px",
                         fontWeight: "bold",
                     }}>Register</h1>
@@ -101,19 +102,6 @@ export const Signup = () => {
                             type="submit" value="Register" className="btn btn-primary" />
                     </div>
                 </form>
-            </section>
-            <section className="footer"
-                style={{
-                    left: "0",
-                    bottom: "0",
-                    width: "100%",
-                    backgroundColor: "black",
-                    color: "lightgreen",
-                    textAlign: "center",
-                    height: "70px",
-                    paddingTop: "20px"
-                }}>
-                Copyright © 2022 by Tempus
             </section>
 
         </div>

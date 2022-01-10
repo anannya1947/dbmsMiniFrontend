@@ -16,6 +16,7 @@ import { useState, useEffect, useReducer } from 'react'
 import { Unregistered } from "./components/Unregistered";
 import jwt from 'jsonwebtoken'
 import { GlobalProvider } from './context/GlobalState'
+import Footer from "./components/Footer";
 function App() {
 
   function getAuth() {
@@ -142,6 +143,7 @@ function App() {
           <Route path="/signup" element={<Signup />} />
 
         </Routes>
+        <Footer />
       </Router>
     </GlobalProvider>
   );
