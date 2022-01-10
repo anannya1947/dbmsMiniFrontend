@@ -28,7 +28,7 @@ export const Home = () => {
                         backgroundImage: `url(${landingPageImg})`,
                         backgroundSize: "cover",
                         filter: "brightness(100%)",
-                        height: "80vh",
+                        height: "45vh",
                         color: "#f5f5f5",
                     }}>
                     <div class="hero-content-area"
@@ -42,7 +42,7 @@ export const Home = () => {
                             backgroundColor: "white",
                             padding: "0px 10px 10px 10px",
                             borderRadius: "15px",
-                            // borderStyle: "solid",
+                            borderStyle: "solid",
                             textAlign: "center",
                             fontFamily: "font-family: 'Work Sans', sans-serif;"
                         }}>
@@ -66,7 +66,7 @@ export const Home = () => {
                 <h1
                     style={{
                         fontWeight: "bold",
-                        padding: "20px 20px"
+                        padding: "5px 5px"
                     }}>Trending</h1>
                 <div style={{ display: "flex", flexWrap: "wrap" }}>
                     {/* <Detail key={details.id} props={details} /> */}
