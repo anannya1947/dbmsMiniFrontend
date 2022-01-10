@@ -29,7 +29,13 @@ export const Signup = () => {
     }
 
     return (
-        <div>
+        <div
+            style={{
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                alignItems: "center"
+            }}>
             <section
                 style={{
                     marginTop: "40px",
@@ -38,9 +44,7 @@ export const Signup = () => {
                     backgroundSize: "cover",
                     width: "600px",
                     height: "500px",
-                    marginLeft: "28%",
-                    borderRadius: "10px",
-                    marginBottom: "60px"
+                    borderRadius: "10px"
                 }}>
                 <h1
                     style={{

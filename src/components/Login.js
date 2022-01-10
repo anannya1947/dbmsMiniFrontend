@@ -29,7 +29,13 @@ export const Login = ({ fn }) => {
     }
 
     return (
-        <div>
+        <div
+            style={{
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                alignItems: "center"
+            }}>
             <section
                 style={{
                     marginTop: "100px",
@@ -38,7 +44,6 @@ export const Login = ({ fn }) => {
                     backgroundSize: "cover",
                     width: "500px",
                     height: "300px",
-                    marginLeft: "28%",
                     borderRadius: "10px"
                 }}>
                 <h1
