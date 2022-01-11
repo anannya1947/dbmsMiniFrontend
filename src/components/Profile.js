@@ -110,13 +110,13 @@ export const Profile = ({ token, tk }) => {
                             </tr>
                             <tr>
                                 <td>Watchlist media</td>
-                                <td>{result.shows_wishlisted}</td>
-                                <td>{result.movies_wishlisted}</td>
+                                <td>{result.tv_wishlisted}</td>
+                                <td>{result.movie_wishlisted}</td>
                             </tr>
                             <tr>
                                 <td>Watched media</td>
-                                <td>{time.shows_watched}</td>
-                                <td>{time.movies_watched}</td>
+                                <td>{time.tv_watched}</td>
+                                <td>{time.movie_watched}</td>
                             </tr>
                             <tr>
                                 <td>Time consumed(mins)</td>
@@ -134,7 +134,7 @@ export const Profile = ({ token, tk }) => {
                                     if (details.media_type === "tv" || details.media_type === "movie")
                                         return (
 
-                                            <DetailRecomm key={details.entry_id} props={details} btn={"true"} token={token} />
+                                            <DetailRecomm key={details.entry_id} props={details} btn={"true"} token={token} tk={tk} />
 
                                         )
 

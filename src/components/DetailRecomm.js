@@ -1,11 +1,12 @@
 import axios from 'axios'
 import React from 'react'
-import { useState, useEffect, useContext } from 'react'
+import { useState, useEffect, useContext, useRef } from 'react'
 import "./detail.css"
 import { GlobalContext } from '../context/GlobalState'
 import { Watchlist } from './Watchlist'
+import Menu from './Menu'
 
-function DetailRecomm({ props, btn, token }) {
+function DetailRecomm({ props, btn, token, tk }) {
 
     const { addMovieToWatchlist, watchlist } = useContext(GlobalContext)
 
@@ -23,22 +24,90 @@ function DetailRecomm({ props, btn, token }) {
             viewer_id: token.id,
             duration: duration,
             time: d,
-            status: "watchlist"
+            status: status
         }
         console.log(details)
         axios.post("http://localhost:5001/db/add", details)
-            .then(res => console.log(res))
+            .then(res => {
+                console.log(res)
+                let rec = {
+                    media_id: media.id,
+                    media_type: props.media_type
+                }
+                let dur = {
+                    media_type: props.media_type,
+                    duration: duration
+                }
+                console.log("rewc:", rec)
+                let del = {
+                    recom_id: props.recom_id
+                }
+                axios.post("http://localhost:5001/db/recommD", del, {
+                    headers: {
+                        authorization: `bearer ${tk}`
+                    }
+                }).then(resD => console.log('del from rec', resD))
+                    .catch(errD => console.log("LETSEE:", errD))
+
+                if (status === "watched") {
+                    axios.post("http://localhost:5001/db/recomm", rec, {
+                        headers: {
+                            authorization: `bearer ${tk}`
+                        }
+                    }).then(res2 => console.log("sucess", res2))
+                        .catch(error2 => console.log(error2))
+
+                    axios.put("http://localhost:5001/db/duration", dur, {
+                        headers: {
+                            authorization: `bearer ${tk}`
+                        }
+
+                    }).then(res3 => console.log("success for duration", res3))
+                        .catch(error3 => console.log(error3))
+                }
+                if (status === "watchlist") {
+                    const wish = {
+                        media_type: props.media_type
+                    }
+                    axios.put("http://localhost:5001/db/profile", wish, {
+                        headers: {
+                            authorization: `bearer ${tk}`
+                        }
+
+                    }).then(res4 => console.log("success for duration", res4))
+                        .catch(error4 => console.log(error4))
+                }
+
+            })
             .catch(error => console.log(error))
     }
 
     //let storedMovie = watchlist.find(o => o.id === props.id)
     //const watchlistDisabled = storedMovie? true: false
     const [media, setMedia] = useState({})
+    const [menu, setMenu] = useState(false)
+    const [status, setStatus] = useState("")
+    const [flag, setFlag] = useState(btn)
     const api = process.env.REACT_APP_API_KEY
     const type = props.media_type
     var media_id = props.recom_id
+    const firstUpdate = useRef(true);
 
+    useEffect(() => {
+        if (firstUpdate.current) {
+            firstUpdate.current = false;
+            return;
+        }
+        handleAdd()
+    }, [status])
 
+    async function menuStatus(m, s) {
+        console.log("status passd", s)
+        setMenu(m)
+        setStatus(s)
+        console.log("status set:", status)
+        // handleAdd()
+    }
     useEffect(() => {
 
         async function getData() {
@@ -101,11 +170,17 @@ function DetailRecomm({ props, btn, token }) {
                 <h4>{title} </h4>
                 <p>{props.media_type}</p>
                 <p>{duration} min  </p>
-                {btn ? <button
+                {flag ? <button
                     className='btn'
-                //disabled={watchlistDisabled} 
-                // onClick={() => handleAdd()}
-                >Watch</button> : <></>}
+                    //disabled={watchlistDisabled} 
+                    onClick={() => {
+                        setFlag(false)
+                        setMenu(true)
+                    }}
+                >ADD</button> : <></>}
+                {
+                    menu ? <Menu fn={menuStatus} /> : <></>
+                }
             </div>
         </div>
     )
