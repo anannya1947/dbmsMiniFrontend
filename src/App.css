@@ -318,3 +318,6 @@ input{
   border-radius: 5px;
   border-color: black;
 }
+tr,td{
+  border: 1px solid white
+}

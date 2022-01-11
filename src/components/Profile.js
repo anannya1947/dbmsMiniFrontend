@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import DetailRecomm from './DetailRecomm'
+import bgImg from '../assets/bgImg.jpg'
 export const Profile = ({ token, tk }) => {
     useEffect(() => {
         async function getProfile() {
@@ -11,7 +12,7 @@ export const Profile = ({ token, tk }) => {
                     }
                 })
                 setResult(res.data[0])
-                console.log("profile:", res.data)
+                console.log(res.data)
                 setFlag(true)
             }
             catch (error) {
@@ -38,12 +39,30 @@ export const Profile = ({ token, tk }) => {
 
         }
         getRecomm()
+        async function getTime() {
+            try {
+                let res = await axios.get("http://localhost:5001/db/total_time", {
+                    headers: {
+                        authorization: `bearer ${tk}`
+                    }
+                })
+                setTime(res.data[0])
+                console.log("tiem date", res.data[0])
 
+
+            }
+            catch (error) {
+                console.log(error);
+            }
+
+        }
+        getTime()
 
     }, [])
 
     const [result, setResult] = useState([])
     const [recomm, setRecomm] = useState([])
+    const [time, setTime] = useState([])
     const [flag, setFlag] = useState(false)
     var json = `"${result.created_on}"`
     var dateStr = JSON.parse(json)
@@ -52,11 +71,18 @@ export const Profile = ({ token, tk }) => {
     let month = (date.getMonth() + 1).toString()
     let day = date.getDate().toString()
     let d = day + "-" + month + "-" + year
-
+    // var dateStr = JSON.parse(result.created_on);
+    // var date = new Date(dateStr);
     return (
         <div>
             {
-                flag ? <div>
+                flag ? <div
+                    style={{
+                        //backgroundImage: `url(${bgImg})`,
+                        backgroundPositionX: "200px",
+                        backgroundPositionY: "0px",
+                        height: "180px"
+                    }}>
                     <div>
                         <p>User Name:
                             {
@@ -69,42 +95,35 @@ export const Profile = ({ token, tk }) => {
                                 d
                             }
                         </p>
-                        <p>
-                            Number of wishlisted movies:
-                            {
-                                result.movies_wishlisted
-                            }
-                        </p>
-                        <p>
-                            Number of wishlisted shows:
-                            {
-                                result.shows_wishlisted
-                            }
-                        </p>
-                        <p>
-                            Number of watched shows:
-                            {
-                                result.shows_watched
-                            }
-                        </p>
-                        <p>
-                            Number of watched movies:
-                            {
-                                result.movies_watched
-                            }
-                        </p>
-                        <p>
-                            Time wasted on shows:
-                            {
-                                result.tv_time
-                            }
-                        </p>
-                        <p>
-                            Time wasted on movies:
-                            {
-                                result.movie_time
-                            }
-                        </p>
+                        <table
+                            style={{
+                                width: "100%",
+                            }}>
+                            <tr
+                                style={{
+                                    fontWeight: "bold",
+                                    fontSize: "20px"
+                                }}>
+                                <td>Count Parameters</td>
+                                <td>Shows</td>
+                                <td>Movies</td>
+                            </tr>
+                            <tr>
+                                <td>Watchlist media</td>
+                                <td>{result.shows_wishlisted}</td>
+                                <td>{result.movies_wishlisted}</td>
+                            </tr>
+                            <tr>
+                                <td>Watched media</td>
+                                <td>{time.shows_watched}</td>
+                                <td>{time.movies_watched}</td>
+                            </tr>
+                            <tr>
+                                <td>Time consumed(mins)</td>
+                                <td>{time.tv_time}</td>
+                                <td>{time.movie_time}</td>
+                            </tr>
+                        </table>
                     </div>
                     <br></br>
                     <div>
