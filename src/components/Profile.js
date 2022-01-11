@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import DetailRecomm from './DetailRecomm'
 import bgImg from '../assets/bgImg.jpg'
+//import avatar from '../assets/avatar.png'
 export const Profile = ({ token, tk }) => {
     useEffect(() => {
         async function getProfile() {
@@ -74,7 +75,7 @@ export const Profile = ({ token, tk }) => {
     // var dateStr = JSON.parse(result.created_on);
     // var date = new Date(dateStr);
     function wastedShowTime(num) {
-        var d = Math.floor(num / 1440); // 60*24
+        var d = Math.floor(num / 1440);
         var h = Math.floor((num - (d * 1440)) / 60);
         var m = Math.round(num % 60);
 
@@ -84,16 +85,11 @@ export const Profile = ({ token, tk }) => {
             return (h + " hours, " + m + " minutes");
         }
     }
+    //let bannerUrl = "https://eu.ui-avatars.com/api/?background=0D8ABC&color=fff&name=A&size=100" 
     return (
         <div>
             {
-                flag ? <div
-                    style={{
-                        //backgroundImage: `url(${bgImg})`,
-                        backgroundPositionX: "200px",
-                        backgroundPositionY: "0px",
-                        height: "180px"
-                    }}>
+                flag ? <div>
                     <div
                         style={{
                             display: "flex",
@@ -103,29 +99,48 @@ export const Profile = ({ token, tk }) => {
                         <div
                             style={{
                                 display: "flex",
-                                flexDirection: "row"
+                                flexDirection: "row",
+                                alignItems: "center",
+                                backgroundImage: `url(${bgImg})`,
+                                height: "150px",
+                                width: "100%"
                             }}>
-                            <div>
-                                <p>User Name:
-                                    {
-                                        result.viewer_name
-                                    }
-                                </p>
-                                <p>
-                                    Date joined:
-                                    {
-                                        d
-                                    }
-                                </p>
+
+                            <img
+                                style={{
+                                    borderRadius: "50%",
+                                    overflow: "hidden",
+                                    display: "flex",
+                                    marginLeft: "50px"
+                                }} src="https://eu.ui-avatars.com/api/?background=0D8ABC&color=fff&name=John+Doe&size=100" alt="ava" />
+                            <div
+                                style={{
+                                    fontWeight: "bold",
+                                    fontSize: "20px",
+                                    marginLeft: "100px",
+                                    color: "black"
+                                }}>
+                                <p
+                                    style={{
+                                        marginLeft: "-60px",
+                                        marginTop: "15px",
+                                        fontSize: "40px",
+                                        color: "white",
+                                        textShadow: "0 0 10px black"
+                                    }}>{result.viewer_name}</p>
                             </div>
                             <button className='btn'
                                 style={{
-                                    height: "35px"
+                                    height: "35px",
+                                    marginLeft: "650px",
+                                    marginTop: "90px"
                                 }}>UPDATE PROFILE</button>
                         </div>
+                        <p>Date joined: {d}</p>
                         <table
                             style={{
                                 width: "60%",
+                                marginTop: "30px"
                             }}>
                             <tr
                                 style={{
@@ -152,6 +167,14 @@ export const Profile = ({ token, tk }) => {
                                 <td>{wastedShowTime(time.movie_time)}</td>
                             </tr>
                         </table>
+                        <div>
+                            <p
+                                style={{
+                                    marginTop: "30px",
+                                    fontWeight: "bold",
+                                    fontSize: "20px"
+                                }}>Total watch time: {wastedShowTime(time.tv_time + time.movie_time)}</p>
+                        </div>
                     </div>
                     <br></br>
                     <div>
