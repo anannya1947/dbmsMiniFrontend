@@ -23,17 +23,21 @@ function DetailWatch({ props, btn, token }) {
             viewer_id: token.id,
             duration: duration,
             time: d,
-            status: "watchlist"
+            status: "watched"
         }
         console.log(details)
         axios.post("http://localhost:5001/db/add", details)
-            .then(res => console.log(res))
+            .then(res => {
+                setButton(false)
+                console.log(res)
+            })
             .catch(error => console.log(error))
     }
 
     //let storedMovie = watchlist.find(o => o.id === props.id)
     //const watchlistDisabled = storedMovie? true: false
     const [media, setMedia] = useState({})
+    const [button, setButton] = useState(btn)
     const api = process.env.REACT_APP_API_KEY
     const type = props.media_type
     var media_id = props.media_id
@@ -101,10 +105,10 @@ function DetailWatch({ props, btn, token }) {
                 <h4>{title} </h4>
                 <p>{props.media_type}</p>
                 <p>{duration} min  </p>
-                {btn ? <button
+                {button ? <button
                     className='btn'
-                //disabled={watchlistDisabled} 
-                // onClick={() => handleAdd()}
+
+                    onClick={() => handleAdd()}
                 >Watch</button> : <></>}
             </div>
         </div>
