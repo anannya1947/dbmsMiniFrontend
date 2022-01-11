@@ -11,7 +11,7 @@ export const Profile = ({ token, tk }) => {
                     }
                 })
                 setResult(res.data[0])
-                console.log(res.data)
+                console.log("profile:", res.data)
                 setFlag(true)
             }
             catch (error) {
@@ -38,30 +38,12 @@ export const Profile = ({ token, tk }) => {
 
         }
         getRecomm()
-        async function getTime() {
-            try {
-                let res = await axios.get("http://localhost:5001/db/total_time", {
-                    headers: {
-                        authorization: `bearer ${tk}`
-                    }
-                })
-                setTime(res.data[0])
-                console.log("tiem date", res.data[0])
 
-
-            }
-            catch (error) {
-                console.log(error);
-            }
-
-        }
-        getTime()
 
     }, [])
 
     const [result, setResult] = useState([])
     const [recomm, setRecomm] = useState([])
-    const [time, setTime] = useState([])
     const [flag, setFlag] = useState(false)
     var json = `"${result.created_on}"`
     var dateStr = JSON.parse(json)
@@ -70,8 +52,7 @@ export const Profile = ({ token, tk }) => {
     let month = (date.getMonth() + 1).toString()
     let day = date.getDate().toString()
     let d = day + "-" + month + "-" + year
-    // var dateStr = JSON.parse(result.created_on);
-    // var date = new Date(dateStr);
+
     return (
         <div>
             {
@@ -103,25 +84,25 @@ export const Profile = ({ token, tk }) => {
                         <p>
                             Number of watched shows:
                             {
-                                time.shows_watched
+                                result.shows_watched
                             }
                         </p>
                         <p>
                             Number of watched movies:
                             {
-                                time.movies_watched
+                                result.movies_watched
                             }
                         </p>
                         <p>
                             Time wasted on shows:
                             {
-                                time.tv_time
+                                result.tv_time
                             }
                         </p>
                         <p>
                             Time wasted on movies:
                             {
-                                time.movie_time
+                                result.movie_time
                             }
                         </p>
                     </div>
