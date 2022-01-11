@@ -47,7 +47,7 @@ export const Profile = ({ token, tk }) => {
                     }
                 })
                 setTime(res.data[0])
-                console.log("tiem date", res.data[0])
+                console.log("time date", res.data[0])
 
 
             }
@@ -73,6 +73,17 @@ export const Profile = ({ token, tk }) => {
     let d = day + "-" + month + "-" + year
     // var dateStr = JSON.parse(result.created_on);
     // var date = new Date(dateStr);
+    function wastedShowTime(num) {
+        var d = Math.floor(num / 1440); // 60*24
+        var h = Math.floor((num - (d * 1440)) / 60);
+        var m = Math.round(num % 60);
+
+        if (d > 0) {
+            return (d + " days, " + h + " hours, " + m + " minutes");
+        } else {
+            return (h + " hours, " + m + " minutes");
+        }
+    }
     return (
         <div>
             {
@@ -83,21 +94,38 @@ export const Profile = ({ token, tk }) => {
                         backgroundPositionY: "0px",
                         height: "180px"
                     }}>
-                    <div>
-                        <p>User Name:
-                            {
-                                result.viewer_name
-                            }
-                        </p>
-                        <p>
-                            Date joined:
-                            {
-                                d
-                            }
-                        </p>
+                    <div
+                        style={{
+                            display: "flex",
+                            flexDirection: "column",
+                            alignItems: "center"
+                        }}>
+                        <div
+                            style={{
+                                display: "flex",
+                                flexDirection: "row"
+                            }}>
+                            <div>
+                                <p>User Name:
+                                    {
+                                        result.viewer_name
+                                    }
+                                </p>
+                                <p>
+                                    Date joined:
+                                    {
+                                        d
+                                    }
+                                </p>
+                            </div>
+                            <button className='btn'
+                                style={{
+                                    height: "35px"
+                                }}>UPDATE PROFILE</button>
+                        </div>
                         <table
                             style={{
-                                width: "100%",
+                                width: "60%",
                             }}>
                             <tr
                                 style={{
@@ -119,9 +147,9 @@ export const Profile = ({ token, tk }) => {
                                 <td>{time.movie_watched}</td>
                             </tr>
                             <tr>
-                                <td>Time consumed(mins)</td>
-                                <td>{time.tv_time}</td>
-                                <td>{time.movie_time}</td>
+                                <td>Time consumed</td>
+                                <td>{wastedShowTime(time.tv_time)}</td>
+                                <td>{wastedShowTime(time.movie_time)}</td>
                             </tr>
                         </table>
                     </div>
