@@ -53,7 +53,7 @@ export const Home = () => {
                                 textAlign: "center"
                             }}>Welcome.</h1>
                         <h3>Keep track of what you watch</h3>
-                        <a href="/search" class="btn">Search</a>
+                        <a href="/searchReg" class="btn">Search</a>
                     </div>
                 </div>
             </div>

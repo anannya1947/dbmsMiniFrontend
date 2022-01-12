@@ -7,7 +7,7 @@ export const Unregistered = () => {
             <div className="container">
                 <div className="inner-content">
                     <div className="brand">
-                        <Link to="/home">Tempus</Link>
+                        <Link to="/">Tempus</Link>
                     </div>
 
                     <ul className='nav-links'>

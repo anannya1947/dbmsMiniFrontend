@@ -137,7 +137,7 @@ export const Profile = ({ token, tk }) => {
                                     marginLeft: "650px",
                                     marginTop: "90px"
                                 }}
-                                href='/ProfileUpdate'>UPDATE PROFILE</a>
+                                href='/WatchHistory'>WATCH HISTORY</a>
                         </div>
                         <p>Date joined: {d}</p>
                         <table

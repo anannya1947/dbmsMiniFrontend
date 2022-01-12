@@ -19,7 +19,7 @@ export const Login = ({ fn }) => {
             .then(res => {
 
                 fn(res.data, true)
-                navigate("/watchlist")
+                navigate("/profile")
             })
             .catch(err => {
                 console.log(err)

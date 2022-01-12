@@ -12,7 +12,7 @@ export const Header = ({ fn }) => {
                     <div className="brand" style={{
                         "padding": "18px"
                     }}>
-                        <Link to="/home">Tempus</Link>
+                        <Link to="/">Tempus</Link>
                     </div>
 
                     <ul className='nav-links'>
@@ -28,9 +28,6 @@ export const Header = ({ fn }) => {
                         </li>
                         <li>
                             <Link to="/searchReg">Search</Link>
-                        </li>
-                        <li>
-                            <Link to="/WatchHistory">Watch_History</Link>
                         </li>
                         <li>
                             <button className='btn'

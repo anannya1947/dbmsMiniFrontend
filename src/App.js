@@ -147,19 +147,19 @@ function App() {
 
         <Routes>
 
-          <Route path="/home" element={<Home token={dtoken} />} />
+          <Route path="/" element={<Home token={dtoken} />} />
 
-          <Route path="/watchlist" element={!auth ? <Navigate to="/home" /> : <Watchlist token={dtoken} tk={token} />} />
+          <Route path="/watchlist" element={!auth ? <Navigate to="/" /> : <Watchlist token={dtoken} tk={token} />} />
 
-          <Route path="/watched" element={!auth ? <Navigate to="/home" /> : <Watched token={dtoken} tk={token} />} />
+          <Route path="/watched" element={!auth ? <Navigate to="/" /> : <Watched token={dtoken} tk={token} />} />
 
-          <Route path="/profile" element={!auth ? <Navigate to="/home" /> : <Profile token={dtoken} tk={token} />} />
+          <Route path="/profile" element={!auth ? <Navigate to="/" /> : <Profile token={dtoken} tk={token} />} />
 
-          <Route path="/searchReg" element={!auth ? <Navigate to="/home" /> : <SearchReg token={dtoken} tk={token} />} />
+          <Route path="/searchReg" element={!auth ? <Navigate to="/search" /> : <SearchReg token={dtoken} tk={token} />} />
 
-          <Route path="/WatchHistory" element={!auth ? <Navigate to="/home" /> : <WatchHistory token={dtoken} tk={token} />} />
+          <Route path="/WatchHistory" element={!auth ? <Navigate to="/" /> : <WatchHistory token={dtoken} tk={token} />} />
 
-          <Route path="/ProfileUpdate" element={!auth ? <Navigate to="/home" /> : < ProfileUpdate token={dtoken} tk={token} />} />
+          <Route path="/ProfileUpdate" element={!auth ? <Navigate to="/" /> : < ProfileUpdate token={dtoken} tk={token} />} />
 
           <Route path="/search" element={<Search />} />
 
