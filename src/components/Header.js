@@ -4,9 +4,14 @@ import { Link } from 'react-router-dom'
 export const Header = ({ fn }) => {
     return (
         <header>
-            <div className="container">
+            <div className="container" style={{
+                "-webkit-text-size-adjust": "100%"
+
+            }}>
                 <div className="inner-content">
-                    <div className="brand">
+                    <div className="brand" style={{
+                        "padding": "18px"
+                    }}>
                         <Link to="/home">Tempus</Link>
                     </div>
 
@@ -41,6 +46,6 @@ export const Header = ({ fn }) => {
                     </ul>
                 </div>
             </div>
-        </header>
+        </header >
     )
 }

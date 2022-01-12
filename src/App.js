@@ -29,6 +29,10 @@ function App() {
         else {
           decodedToken = decode
         }
+        if (decodedToken.exp * 1000 < Date.now()) {
+          console.log("got exec here for exp")
+          decodedToken = {}
+        }
       })
       if (decodedToken) {
         console.log(decodedToken, "this is decoded token for auth ")
@@ -50,6 +54,10 @@ function App() {
         if (err) { decodedToken = {} }
         else {
           decodedToken = decode
+        }
+        if (decodedToken.exp * 1000 < Date.now()) {
+          console.log("got exec here for exp")
+          decodedToken = {}
         }
 
       })
@@ -82,8 +90,19 @@ function App() {
       let secret = process.env.REACT_APP_SECRET
       var decodedToken
       jwt.verify(result, secret, function (err, decode) {
-        if (err) decodedToken = {}
-        decodedToken = decode
+
+        if (err) {
+          console.log("got exec err of token ")
+          console.log(err)
+          decodedToken = {}
+        }
+        else {
+          decodedToken = decode
+        }
+        if (decodedToken.exp * 1000 < Date.now()) {
+          console.log("got exec here for exp")
+          decodedToken = {}
+        }
       })
 
       if (decodedToken) {
