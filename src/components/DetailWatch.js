@@ -10,6 +10,7 @@ function DetailWatch({ props, btn, token, tk }) {
     const { addMovieToWatchlist, watchlist } = useContext(GlobalContext)
 
     function handleAdd() {
+        setButton(false)
         let date = new Date()
         let year = date.getFullYear().toString()
         let month = (date.getMonth() + 1).toString()
@@ -53,14 +54,14 @@ function DetailWatch({ props, btn, token, tk }) {
                 }).then(res2 => console.log("sucess", res2))
                     .catch(error2 => console.log(error2))
 
-                axios.put("http://localhost:5001/db/duration", dur, {
-                    headers: {
-                        authorization: `bearer ${tk}`
-                    }
+                // axios.put("http://localhost:5001/db/duration", dur, {
+                //     headers: {
+                //         authorization: `bearer ${tk}`
+                //     }
 
 
-                }).then(res3 => console.log("success for duration", res3))
-                    .catch(error3 => console.log(error3))
+                // }).then(res3 => console.log("success for duration", res3))
+                //     .catch(error3 => console.log(error3))
                 axios.post("http://localhost:5001/db/watch_history", hist, {
                     headers: {
                         authorization: `bearer ${tk}`
@@ -69,7 +70,7 @@ function DetailWatch({ props, btn, token, tk }) {
                     console.log("sucess in history entry", res4))
                     .catch(error4 => console.log(error4))
 
-                setButton(false)
+
                 console.log(res)
             })
             .catch(error => console.log(error))
