@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import DetailRecomm from './DetailRecomm'
 import bgImg from '../assets/bgImg.jpg'
+import { Navigate } from 'react-router-dom'
 //import avatar from '../assets/avatar.png'
 export const Profile = ({ token, tk }) => {
     useEffect(() => {
@@ -130,12 +131,13 @@ export const Profile = ({ token, tk }) => {
 
                                     }}>{result.viewer_name.toUpperCase()}</p>
                             </div>
-                            <button className='btn'
+                            <a className='btn'
                                 style={{
                                     height: "35px",
                                     marginLeft: "650px",
                                     marginTop: "90px"
-                                }}>UPDATE PROFILE</button>
+                                }}
+                                href='/ProfileUpdate'>UPDATE PROFILE</a>
                         </div>
                         <p>Date joined: {d}</p>
                         <table
