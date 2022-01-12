@@ -34,7 +34,7 @@ export const Watchlist = ({ token, tk }) => {
                         if (details.media_type === "tv" || details.media_type === "movie")
                             return (
 
-                                <DetailWatch key={details.id} props={details} btn={"true"} token={token} />
+                                <DetailWatch key={details.id} props={details} btn={"true"} token={token} tk={tk} />
 
                             )
 

@@ -112,7 +112,7 @@ export const Profile = ({ token, tk }) => {
                                     overflow: "hidden",
                                     display: "flex",
                                     marginLeft: "50px"
-                                }} src="https://eu.ui-avatars.com/api/?background=0D8ABC&color=fff&name=John+Doe&size=100" alt="ava" />
+                                }} src={`https://eu.ui-avatars.com/api/?background=0D8ABC&color=fff&name=${result.viewer_name}&size=100`} alt="ava" />
                             <div
                                 style={{
                                     fontWeight: "bold",
@@ -126,8 +126,9 @@ export const Profile = ({ token, tk }) => {
                                         marginTop: "15px",
                                         fontSize: "40px",
                                         color: "white",
-                                        textShadow: "0 0 10px black"
-                                    }}>{result.viewer_name}</p>
+                                        textShadow: "0 0 10px #000000"
+
+                                    }}>{result.viewer_name.toUpperCase()}</p>
                             </div>
                             <button className='btn'
                                 style={{
