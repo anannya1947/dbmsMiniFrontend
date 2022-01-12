@@ -30,6 +30,9 @@ export const Header = ({ fn }) => {
                             <Link to="/searchReg">Search</Link>
                         </li>
                         <li>
+                            <Link to="/WatchHistory">Watch_History</Link>
+                        </li>
+                        <li>
                             <button className='btn'
                                 onClick={() => {
                                     fn('', false)

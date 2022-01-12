@@ -17,6 +17,7 @@ import { Unregistered } from "./components/Unregistered";
 import jwt from 'jsonwebtoken'
 import { GlobalProvider } from './context/GlobalState'
 import Footer from "./components/Footer";
+import WatchHistory from "./components/WatchHistory";
 function App() {
 
   function getAuth() {
@@ -154,6 +155,8 @@ function App() {
           <Route path="/profile" element={!auth ? <Navigate to="/home" /> : <Profile token={dtoken} tk={token} />} />
 
           <Route path="/searchReg" element={!auth ? <Navigate to="/home" /> : <SearchReg token={dtoken} tk={token} />} />
+
+          <Route path="/WatchHistory" element={!auth ? <Navigate to="/home" /> : <WatchHistory token={dtoken} tk={token} />} />
 
           <Route path="/search" element={<Search />} />
 

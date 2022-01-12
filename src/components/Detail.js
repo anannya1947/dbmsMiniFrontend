@@ -38,6 +38,10 @@ function Detail({ props, btn, token, tk }) {
                     media_type: props.media_type,
                     duration: duration
                 }
+                let hist = {
+                    media_type: props.media_type,
+                    media_id: media_id
+                }
                 console.log("rewc:", rec)
                 if (status === "watched") {
                     axios.post("http://localhost:5001/db/recomm", rec, {
@@ -54,6 +58,14 @@ function Detail({ props, btn, token, tk }) {
 
                     }).then(res3 => console.log("success for duration", res3))
                         .catch(error3 => console.log(error3))
+
+                    axios.post("http://localhost:5001/db/watch_history", hist, {
+                        headers: {
+                            authorization: `bearer ${tk}`
+                        }
+                    }).then(res4 =>
+                        console.log("sucess in history entry", res4))
+                        .catch(error4 => console.log(error4))
                 }
                 if (status === "watchlist") {
                     const wish = {

@@ -40,6 +40,10 @@ function DetailWatch({ props, btn, token, tk }) {
                 let del = {
                     recom_id: props.recom_id
                 }
+                let hist = {
+                    media_type: props.media_type,
+                    media_id: media_id
+                }
 
 
                 axios.post("http://localhost:5001/db/recomm", rec, {
@@ -54,9 +58,16 @@ function DetailWatch({ props, btn, token, tk }) {
                         authorization: `bearer ${tk}`
                     }
 
+
                 }).then(res3 => console.log("success for duration", res3))
                     .catch(error3 => console.log(error3))
-
+                axios.post("http://localhost:5001/db/watch_history", hist, {
+                    headers: {
+                        authorization: `bearer ${tk}`
+                    }
+                }).then(res4 =>
+                    console.log("sucess in history entry", res4))
+                    .catch(error4 => console.log(error4))
 
                 setButton(false)
                 console.log(res)
