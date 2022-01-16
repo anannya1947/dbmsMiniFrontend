@@ -10,37 +10,52 @@ function WatchHistory({ tk }) {
     const submitForm = (event) => {
         event.preventDefault();
         const api = process.env.REACT_APP_API_KEY
-        axios.get(`http://localhost:5001/db/watch_history`, {
+        // axios.get(`http://localhost:5001/db/watch_history`, {
+        //     headers: {
+        //         authorization: `bearer ${tk}`
+        //     }
+        // })
+        //     .then(res => {
+
+
+        //         let day = date.substring(8, 10)
+        //         let month = date.substring(5, 7)
+        //         let year = date.substring(0, 4)
+
+        //         let ds = month + "-" + day + "-" + year
+
+        //         var dateH = new Date(ds);
+        //         var json = JSON.stringify(dateH)
+
+
+        //         const filter = res.data.filter(function (entry) {
+        //             return `"${entry.timestamp}"` === json
+        //         })
+
+
+
+        //         setResult(filter)
+        //         console.log("act result", result)
+
+        //         setFlag(true)
+        //     })
+        //     .catch(err => console.log(err))
+
+        let body = {
+            date: date
+        }
+        axios.post(`http://localhost:5001/db/watch_history_get`, body, {
             headers: {
                 authorization: `bearer ${tk}`
             }
         })
             .then(res => {
-
-
-                let day = date.substring(8, 10)
-                let month = date.substring(5, 7)
-                let year = date.substring(0, 4)
-
-                let ds = month + "-" + day + "-" + year
-
-                var dateH = new Date(ds);
-                var json = JSON.stringify(dateH)
-
-
-                const filter = res.data.filter(function (entry) {
-                    return `"${entry.timestamp}"` === json
-                })
-
-
-
-                setResult(filter)
-                console.log("act result", result)
-
+                setResult(res.data)
+                console.log("TES:", res)
                 setFlag(true)
-            })
-            .catch(err => console.log(err))
+            }
 
+            ).catch(err => console.log(err))
     }
 
     const [flag, setFlag] = useState(false)
