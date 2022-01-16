@@ -153,9 +153,19 @@ function Detail({ props, btn, token, tk }) {
 
         if (type === "tv") {
             title = props.name
-            let epRunTime = media.episode_run_time
+            let epRunTime = 0
+            if (Array.isArray(media.episode_run_time)) {
+                epRunTime = media.episode_run_time[0]
+            }
+            else {
+                epRunTime = media.episode_run_time
+            }
+
             let noOfEp = media.number_of_episodes
             duration = epRunTime * noOfEp
+            if (!duration) {
+                duration = 0
+            }
             if (title === null)
                 title = props.original_name
         }
