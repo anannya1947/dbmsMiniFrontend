@@ -9,71 +9,26 @@ function DetailWatch({ props, btn, token, tk }) {
 
     const { addMovieToWatchlist, watchlist } = useContext(GlobalContext)
 
-    function handleAdd() {
+    function handleRemove() {
         setButton(false)
-        let date = new Date()
-        let year = date.getFullYear().toString()
-        let month = (date.getMonth() + 1).toString()
-        let day = date.getDate().toString()
-        let d = year + "-" + month + "-" + day
         let details = {
-            title: title,
-            imgurl: imgUrl,
-            media_type: props.media_type,
-            media_id: media.id,
-            viewer_id: token.id,
+            entry_id: entry_id,
+            status: 'watched',
+            media_id: media_id,
+            media_type: type,
             duration: duration,
-            time: d,
-            status: "watched"
+            id: props.viewer_id
         }
-        console.log(details)
-        axios.post("http://localhost:5001/db/add", details)
-            .then(res => {
-                let rec = {
-                    media_id: media.id,
-                    media_type: props.media_type
-                }
-                let dur = {
-                    media_type: props.media_type,
-                    duration: duration
-                }
-                console.log("rewc:", rec)
-                let del = {
-                    recom_id: props.recom_id
-                }
-                let hist = {
-                    media_type: props.media_type,
-                    media_id: media_id
-                }
+        console.log("deatils:", details)
 
+        axios.post("http://localhost:5001/db/remove", details, {
+            headers: {
+                authorization: `bearer ${tk}`
+            }
+        })
+            .then(res => console.log(res))
+            .catch(err => console.log(err))
 
-                axios.post("http://localhost:5001/db/recomm", rec, {
-                    headers: {
-                        authorization: `bearer ${tk}`
-                    }
-                }).then(res2 => console.log("sucess", res2))
-                    .catch(error2 => console.log(error2))
-
-                // axios.put("http://localhost:5001/db/duration", dur, {
-                //     headers: {
-                //         authorization: `bearer ${tk}`
-                //     }
-
-
-                // }).then(res3 => console.log("success for duration", res3))
-                //     .catch(error3 => console.log(error3))
-                axios.post("http://localhost:5001/db/watch_history", hist, {
-                    headers: {
-                        authorization: `bearer ${tk}`
-                    }
-                }).then(res4 =>
-                    console.log("sucess in history entry", res4))
-                    .catch(error4 => console.log(error4))
-
-
-                console.log(res)
-            })
-            .catch(error => console.log(error))
     }
 
     //let storedMovie = watchlist.find(o => o.id === props.id)
@@ -83,7 +38,7 @@ function DetailWatch({ props, btn, token, tk }) {
     const api = process.env.REACT_APP_API_KEY
     const type = props.media_type
     var media_id = props.media_id
-
+    var entry_id = props.entry_id
 
     useEffect(() => {
 
@@ -160,10 +115,10 @@ function DetailWatch({ props, btn, token, tk }) {
                 <p>{props.media_type}</p>
                 <p>{duration} min  </p>
                 {button ? <button
-                    className='btn'
+                    className='btnR'
 
-                    onClick={() => handleAdd()}
-                >Watch</button> : <></>}
+                    onClick={() => handleRemove()}
+                >Remove</button> : <></>}
             </div>
         </div>
     )

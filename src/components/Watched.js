@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React, { useState, useEffect } from 'react'
-import DetailWatch from './DetailWatch'
+import DetailWatch from './DetailWatched'
 
 export const Watched = ({ token, tk }) => {
     const [flag, setFlag] = useState(false)

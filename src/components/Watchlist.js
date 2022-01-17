@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React, { useState, useEffect } from 'react'
-import DetailWatch from './DetailWatch'
+import DetailWatchList from './DetailWatchList'
 
 export const Watchlist = ({ token, tk }) => {
     const [flag, setFlag] = useState(false)
@@ -34,7 +34,7 @@ export const Watchlist = ({ token, tk }) => {
                         if (details.media_type === "tv" || details.media_type === "movie")
                             return (
 
-                                <DetailWatch key={details.id} props={details} btn={"true"} token={token} tk={tk} />
+                                <DetailWatchList key={details.id} props={details} btn={"true"} token={token} tk={tk} />
 
                             )
 
