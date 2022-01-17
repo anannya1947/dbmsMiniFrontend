@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import landingPageImg from '../assets/landingPageImg.jpg'
+import jwt from 'jsonwebtoken'
 
 export const Login = ({ fn }) => {
     const [username, setUsername] = useState("")
@@ -19,6 +20,23 @@ export const Login = ({ fn }) => {
             .then(res => {
 
                 fn(res.data, true)
+
+                let token = res.data
+                let secret = process.env.REACT_APP_SECRET
+                let result = jwt.verify(token, secret)
+
+
+                let expireTime = result.exp * 1000
+                const d = new Date()
+                const t = d.getTime()
+
+                expireTime = Math.floor((expireTime - t))
+                // expireTime = 10000
+                setTimeout(() => {
+                    fn('', false)
+                    alert("Session Expired Login again")
+                }, expireTime)
+
                 navigate("/profile")
             })
             .catch(err => {
