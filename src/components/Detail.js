@@ -172,6 +172,9 @@ function Detail({ props, btn, token, tk }) {
         if (type === "movie") {
             title = props.title
             duration = media.runtime
+            if (!duration) {
+                duration = 0
+            }
             if (title === null)
                 title = props.original_title
         }

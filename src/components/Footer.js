@@ -1,16 +1,18 @@
 import React from 'react'
 import tmdbLogo from '../assets/tmdbLogo.jpg'
-
+import tmdb from '../assets/download.jfif'
 function Footer() {
     return (
 
         <div className="footer"
             style={{
                 position: "relative",
-                bottom: "-700px",
+                left: "0",
+                bottom: "0",
+                marginTop: "700px",
                 width: "100%",
-                backgroundColor: "black",
-                color: "lightgreen",
+                backgroundImage: "radial-gradient(at 30% top, #031d33 0%, rgba(3,37,65) 70%)",
+                color: "white",
                 textAlign: "center",
                 height: "70px",
             }}>
@@ -21,7 +23,7 @@ function Footer() {
                     height: "45px",
                     width: "45px"
                 }}
-                src={tmdbLogo} alt="tmdb Logo"></img>
+                src={tmdb} alt="tmdb Logo"></img>
             Copyright © 2022 by Tempus
         </div >
 

@@ -173,6 +173,9 @@ function DetailRecomm({ props, btn, token, tk }) {
         if (type === "movie") {
             title = media.title
             duration = media.runtime
+            if (!duration) {
+                duration = 0
+            }
             if (title === null)
                 title = media.original_title
         }
