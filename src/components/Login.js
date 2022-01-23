@@ -5,7 +5,7 @@ import axios from 'axios'
 import landingPageImg from '../assets/landingPageImg.jpg'
 import jwt from 'jsonwebtoken'
 
-export const Login = ({ fn }) => {
+export const Login = ({ fn, ft }) => {
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
     const navigate = useNavigate()
@@ -32,16 +32,17 @@ export const Login = ({ fn }) => {
 
                 expireTime = Math.floor((expireTime - t))
                 // expireTime = 10000
-                setTimeout(() => {
+                const timer = setTimeout(() => {
                     fn('', false)
                     alert("Session Expired Login again")
                 }, expireTime)
-
+                ft(timer)
                 navigate("/profile")
             })
             .catch(err => {
+                alert("invalid username or password")
                 console.log(err)
-                console.log(err.response.data)
+
             })
 
     }

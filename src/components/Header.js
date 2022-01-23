@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-export const Header = ({ fn }) => {
+export const Header = ({ fn, t }) => {
     return (
         <header>
             <div className="container" style={{
@@ -33,6 +33,7 @@ export const Header = ({ fn }) => {
                             <button className='btn'
                                 onClick={() => {
                                     fn('', false)
+                                    clearTimeout(t)
                                 }
                                 }>Logout</button>
                         </li>

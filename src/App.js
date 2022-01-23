@@ -135,6 +135,12 @@ function App() {
 
     sessionStorage.setItem("auth", token)
   }
+  const [time, setTime] = useState()
+  function changeTimer(timer) {
+    setTime(timer)
+  }
+
+
 
   return (
     <GlobalProvider>
@@ -142,7 +148,7 @@ function App() {
 
         {
           auth ?
-            <Header fn={changeAuth} /> : <Unregistered />
+            <Header fn={changeAuth} t={time} /> : <Unregistered />
         }
 
         <Routes>
@@ -163,7 +169,7 @@ function App() {
 
           <Route path="/search" element={<Search />} />
 
-          <Route path="/login" element={<Login fn={changeAuth} />} />
+          <Route path="/login" element={<Login fn={changeAuth} ft={changeTimer} />} />
 
           <Route path="/signup" element={<Signup />} />
 
