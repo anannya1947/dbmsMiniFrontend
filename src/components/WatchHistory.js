@@ -52,6 +52,13 @@ function WatchHistory({ tk }) {
             .then(res => {
                 setResult(res.data)
                 console.log("TES:", res)
+
+                if (res.data.length > 0) {
+                    setFlag2(true)
+                }
+                else {
+                    setFlag2(false)
+                }
                 setFlag(true)
             }
 
@@ -59,6 +66,7 @@ function WatchHistory({ tk }) {
     }
 
     const [flag, setFlag] = useState(false)
+    const [flag2, setFlag2] = useState(false)
     const [date, setDate] = useState("")
     const [result, setResult] = useState([])
 
@@ -99,7 +107,7 @@ function WatchHistory({ tk }) {
             </form>
             <div>
                 {
-                    flag ?
+                    flag ? (flag2 ?
                         result.map(details => {
                             if (details.media_type === "tv" || details.media_type === "movie")
                                 return (
@@ -108,7 +116,13 @@ function WatchHistory({ tk }) {
 
                                 )
 
-                        }) : <div></div>
+                        }) : <div style={{
+                            textAlign: "center",
+                            marginTop: "30px",
+                            fontWeight: "bold",
+                            fontSize: "30px"
+
+                        }}> No media watched on this day </div>) : <div></div>
                 }
             </div>
 

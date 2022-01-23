@@ -139,7 +139,9 @@ export const Profile = ({ token, tk }) => {
                                 }}
                                 href='/WatchHistory'>WATCH HISTORY</a>
                         </div>
-                        <p>Date joined: {d}</p>
+                        <p></p>
+                        <p></p>
+                        <h4>Date joined: {d}</h4>
                         <table
                             style={{
                                 width: "60%",
@@ -175,13 +177,13 @@ export const Profile = ({ token, tk }) => {
                                 style={{
                                     marginTop: "30px",
                                     fontWeight: "bold",
-                                    fontSize: "20px"
+                                    fontSize: "35px"
                                 }}>Total watch time: {wastedShowTime(time.tv_time + time.movie_time)}</p>
                         </div>
                     </div>
                     <br></br>
                     <div>
-                        <h2>Recommendations</h2>
+                        <h2 style={{ textAlign: "center" }}>Recommendations:</h2>
                         <div>
                             {
                                 recomm.map(details => {

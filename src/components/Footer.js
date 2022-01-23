@@ -16,6 +16,11 @@ function Footer() {
                 textAlign: "center",
                 height: "70px",
             }}>
+
+
+            Copyright © 2022 by Tempus
+            <span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  </span>
+            Powered by
             <img
                 style={{
                     marginTop: "10px",
@@ -24,7 +29,7 @@ function Footer() {
                     width: "45px"
                 }}
                 src={tmdb} alt="tmdb Logo"></img>
-            Copyright © 2022 by Tempus
+
         </div >
 
     )

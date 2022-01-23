@@ -23,7 +23,7 @@ export const Signup = () => {
         })
             .then(() => {
                 alert("successful insert")
-                navigate("/search")
+                navigate("/login")
             })
             .catch(err => console.log(err))
     }
