@@ -14,7 +14,7 @@ export const Signup = () => {
 
     const submitRegister = (e) => {
         e.preventDefault()
-        Axios.post('http://localhost:5001/db/register', {
+        Axios.post('/db/register', {
             name: name,
             age: age,
             username: username,

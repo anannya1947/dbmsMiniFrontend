@@ -44,7 +44,7 @@ function WatchHistory({ tk }) {
         let body = {
             date: date
         }
-        axios.post(`http://localhost:5001/db/watch_history_get`, body, {
+        axios.post(`/db/watch_history_get`, body, {
             headers: {
                 authorization: `bearer ${tk}`
             }

@@ -27,7 +27,7 @@ function DetailRecomm({ props, btn, token, tk }) {
             status: status
         }
         console.log(details)
-        axios.post("http://localhost:5001/db/add", details)
+        axios.post("/db/add", details)
             .then(res => {
                 console.log(res)
                 let rec = {
@@ -46,7 +46,7 @@ function DetailRecomm({ props, btn, token, tk }) {
                     media_type: props.media_type,
                     media_id: media_id
                 }
-                axios.post("http://localhost:5001/db/recommD", del, {
+                axios.post("/db/recommD", del, {
                     headers: {
                         authorization: `bearer ${tk}`
                     }
@@ -54,21 +54,21 @@ function DetailRecomm({ props, btn, token, tk }) {
                     .catch(errD => console.log("LETSEE:", errD))
 
                 if (status === "watched") {
-                    axios.post("http://localhost:5001/db/recomm", rec, {
+                    axios.post("/db/recomm", rec, {
                         headers: {
                             authorization: `bearer ${tk}`
                         }
                     }).then(res2 => console.log("sucess", res2))
                         .catch(error2 => console.log(error2))
 
-                    axios.put("http://localhost:5001/db/duration", dur, {
+                    axios.put("/db/duration", dur, {
                         headers: {
                             authorization: `bearer ${tk}`
                         }
 
                     }).then(res3 => console.log("success for duration", res3))
                         .catch(error3 => console.log(error3))
-                    axios.post("http://localhost:5001/db/watch_history", hist, {
+                    axios.post("/db/watch_history", hist, {
                         headers: {
                             authorization: `bearer ${tk}`
                         }
@@ -80,7 +80,7 @@ function DetailRecomm({ props, btn, token, tk }) {
                     const wish = {
                         media_type: props.media_type
                     }
-                    axios.put("http://localhost:5001/db/profile", wish, {
+                    axios.put("/db/profile", wish, {
                         headers: {
                             authorization: `bearer ${tk}`
                         }

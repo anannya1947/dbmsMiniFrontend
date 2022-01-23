@@ -16,7 +16,7 @@ export const Login = ({ fn, ft }) => {
             username: username,
             password: password
         }
-        axios.post('http://localhost:5001/db/login', cred)
+        axios.post('/db/login', cred)
             .then(res => {
 
                 fn(res.data, true)

@@ -21,7 +21,7 @@ function DetailWatch({ props, btn, token, tk }) {
         }
         console.log("deatils:", details)
 
-        axios.post("http://localhost:5001/db/remove", details, {
+        axios.post("/db/remove", details, {
             headers: {
                 authorization: `bearer ${tk}`
             }

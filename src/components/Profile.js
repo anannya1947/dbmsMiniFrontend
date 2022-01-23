@@ -8,7 +8,7 @@ export const Profile = ({ token, tk }) => {
     useEffect(() => {
         async function getProfile() {
             try {
-                let res = await axios.get("http://localhost:5001/db/profile", {
+                let res = await axios.get("/db/profile", {
                     headers: {
                         authorization: `bearer ${tk}`
                     }
@@ -25,7 +25,7 @@ export const Profile = ({ token, tk }) => {
         getProfile()
         async function getRecomm() {
             try {
-                let res = await axios.get("http://localhost:5001/db/recomm", {
+                let res = await axios.get("/db/recomm", {
                     headers: {
                         authorization: `bearer ${tk}`
                     }
@@ -43,7 +43,7 @@ export const Profile = ({ token, tk }) => {
         getRecomm()
         async function getTime() {
             try {
-                let res = await axios.get("http://localhost:5001/db/total_time", {
+                let res = await axios.get("/db/total_time", {
                     headers: {
                         authorization: `bearer ${tk}`
                     }
