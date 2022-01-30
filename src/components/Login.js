@@ -16,7 +16,7 @@ export const Login = ({ fn, ft }) => {
             username: username,
             password: password
         }
-        axios.post('/db/login', cred)
+        axios.post('https://tempusapi.herokuapp.com/db/login', cred)
             .then(res => {
 
                 fn(res.data, true)

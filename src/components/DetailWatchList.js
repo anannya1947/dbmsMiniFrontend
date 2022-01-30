@@ -27,7 +27,7 @@ function DetailWatchList({ props, btn, token, tk }) {
             status: "watched"
         }
         console.log(details)
-        axios.post("/db/add", details)
+        axios.post("https://tempusapi.herokuapp.com/db/add", details)
             .then(res => {
                 let rec = {
                     media_id: media.id,
@@ -47,7 +47,7 @@ function DetailWatchList({ props, btn, token, tk }) {
                 }
 
 
-                axios.post("/db/recomm", rec, {
+                axios.post("https://tempusapi.herokuapp.com/db/recomm", rec, {
                     headers: {
                         authorization: `bearer ${tk}`
                     }
@@ -62,7 +62,7 @@ function DetailWatchList({ props, btn, token, tk }) {
 
                 // }).then(res3 => console.log("success for duration", res3))
                 //     .catch(error3 => console.log(error3))
-                axios.post("/db/watch_history", hist, {
+                axios.post("https://tempusapi.herokuapp.com/db/watch_history", hist, {
                     headers: {
                         authorization: `bearer ${tk}`
                     }
@@ -88,7 +88,7 @@ function DetailWatchList({ props, btn, token, tk }) {
         }
         console.log("deatils:", details)
 
-        axios.post("/db/remove", details, {
+        axios.post("https://tempusapi.herokuapp.com/db/remove", details, {
             headers: {
                 authorization: `bearer ${tk}`
             }

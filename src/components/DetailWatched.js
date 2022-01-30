@@ -21,7 +21,7 @@ function DetailWatch({ props, btn, token, tk }) {
         }
         console.log("deatils:", details)
 
-        axios.post("/db/remove", details, {
+        axios.post("https://tempusapi.herokuapp.com/db/remove", details, {
             headers: {
                 authorization: `bearer ${tk}`
             }

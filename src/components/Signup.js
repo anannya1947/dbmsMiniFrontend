@@ -14,7 +14,7 @@ export const Signup = () => {
 
     const submitRegister = (e) => {
         e.preventDefault()
-        Axios.post('/db/register', {
+        Axios.post('https://tempusapi.herokuapp.com/db/register', {
             name: name,
             age: age,
             username: username,

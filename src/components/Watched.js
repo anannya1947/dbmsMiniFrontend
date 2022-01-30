@@ -9,7 +9,7 @@ export const Watched = ({ token, tk }) => {
     useEffect(() => {
         async function getWatch() {
             try {
-                let res = await axios.get("/db/add/2", {
+                let res = await axios.get("https://tempusapi.herokuapp.com/db/add/2", {
                     headers: {
                         authorization: `bearer ${tk}`
                     }

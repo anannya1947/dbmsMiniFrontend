@@ -44,7 +44,7 @@ function WatchHistory({ tk }) {
         let body = {
             date: date
         }
-        axios.post(`/db/watch_history_get`, body, {
+        axios.post(`https://tempusapi.herokuapp.com/db/watch_history_get`, body, {
             headers: {
                 authorization: `bearer ${tk}`
             }
