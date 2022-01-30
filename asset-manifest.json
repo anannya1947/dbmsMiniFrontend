@@ -1,0 +1,30 @@
+{
+  "files": {
+    "main.css": "/dbmsMiniFrontend/static/css/main.8064c9cf.chunk.css",
+    "main.js": "/dbmsMiniFrontend/static/js/main.f56e5d21.chunk.js",
+    "main.js.map": "/dbmsMiniFrontend/static/js/main.f56e5d21.chunk.js.map",
+    "runtime-main.js": "/dbmsMiniFrontend/static/js/runtime-main.e9baaaac.js",
+    "runtime-main.js.map": "/dbmsMiniFrontend/static/js/runtime-main.e9baaaac.js.map",
+    "static/css/2.bf081b43.chunk.css": "/dbmsMiniFrontend/static/css/2.bf081b43.chunk.css",
+    "static/js/2.7a4b28bf.chunk.js": "/dbmsMiniFrontend/static/js/2.7a4b28bf.chunk.js",
+    "static/js/2.7a4b28bf.chunk.js.map": "/dbmsMiniFrontend/static/js/2.7a4b28bf.chunk.js.map",
+    "static/js/3.4955bed4.chunk.js": "/dbmsMiniFrontend/static/js/3.4955bed4.chunk.js",
+    "static/js/3.4955bed4.chunk.js.map": "/dbmsMiniFrontend/static/js/3.4955bed4.chunk.js.map",
+    "index.html": "/dbmsMiniFrontend/index.html",
+    "static/css/2.bf081b43.chunk.css.map": "/dbmsMiniFrontend/static/css/2.bf081b43.chunk.css.map",
+    "static/css/main.8064c9cf.chunk.css.map": "/dbmsMiniFrontend/static/css/main.8064c9cf.chunk.css.map",
+    "static/js/2.7a4b28bf.chunk.js.LICENSE.txt": "/dbmsMiniFrontend/static/js/2.7a4b28bf.chunk.js.LICENSE.txt",
+    "static/media/bgImg.5a339c99.jpg": "/dbmsMiniFrontend/static/media/bgImg.5a339c99.jpg",
+    "static/media/download.fa8b25e4.jfif": "/dbmsMiniFrontend/static/media/download.fa8b25e4.jfif",
+    "static/media/all.min.css": "/dbmsMiniFrontend/static/media/fa-solid-900.eeccf4f6.woff",
+    "static/media/landingPageImg.af1549fc.jpg": "/dbmsMiniFrontend/static/media/landingPageImg.af1549fc.jpg",
+    "static/media/tmdbLogo.8e68965f.jpg": "/dbmsMiniFrontend/static/media/tmdbLogo.8e68965f.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.e9baaaac.js",
+    "static/css/2.bf081b43.chunk.css",
+    "static/js/2.7a4b28bf.chunk.js",
+    "static/css/main.8064c9cf.chunk.css",
+    "static/js/main.f56e5d21.chunk.js"
+  ]
+}
